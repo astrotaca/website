@@ -1,2 +1,2 @@
 # astrotaca.github.io
-webstie
+website
