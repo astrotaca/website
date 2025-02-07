@@ -2,7 +2,11 @@ title: "AstroTaca"
 description: "Astrophotography gear, guides, and blog."
 baseurl: "" 
 url: "https://astrotaca.github.io"
-theme: minima # You can change this later if needed
+
+# Force GitHub Pages to use the correct theme
+remote_theme: jekyll/minima
+
+# Enable Jekyll plugins (required for Minima)
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
