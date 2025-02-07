@@ -1,23 +1,46 @@
 title: "AstroTaca"
-description: "Astrophotography Gear & Guides"
-baseurl: ""
-url: "http://127.0.0.1:4000"
+description: "Astrophotography gear, guides, and more!"
+baseurl: ""  # Keep this empty for GitHub Pages root domain
+url: "https://astrotaca.github.io"  # Your GitHub Pages URL
 
-# Blog posts => /blog/my-title/
-permalink: /blog/:title/
+# Markdown & Highlighter settings
+markdown: kramdown
+highlighter: rouge
 
+# Theme & Plugins
+theme: minima  # Change if you are using a custom theme
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
 
+# Build settings
 exclude:
+  - README.md
   - Gemfile
   - Gemfile.lock
-  - README.md
-  - node_modules
-  - package.json
-  - package-lock.json
-  - yarn.lock
+  - node_modules/
+  - vendor/
 
-feed:
-  path: feed
-future: true
+# Permalinks (For SEO-friendly URLs)
+permalink: /blog/:title/
+
+# Navigation Links
+navbar_links:
+  - title: "About"
+    url: "/about/"
+  - title: "Products"
+    url: "/products/"
+  - title: "Drivers/Software"
+    url: "/drivers/"
+  - title: "Guides"
+    url: "/guides/"
+  - title: "Blog"
+    url: "/blog/"
+  - title: "Contact"
+    url: "/contact/"
+
+# Social Links
+social:
+  github: "https://github.com/astrotaca"
+  instagram: "https://www.instagram.com/astrotaca/"
