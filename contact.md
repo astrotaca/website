@@ -1,8 +1,9 @@
 ---
-layout: default
+layout: page
 title: "Contact"
 permalink: /contact/
 ---
 
-## Contact Us
+## Contact AstroTaca
+
 For inquiries, email us at [info@astrotaca.com](mailto:info@astrotaca.com).

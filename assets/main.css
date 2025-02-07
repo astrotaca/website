@@ -1,30 +1,215 @@
+/* === GENERAL STYLING === */
 body {
-    font-family: Arial, sans-serif;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f8f8f8;
+    font-family: 'Poppins', sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
 }
 
-h1 {
-    color: #333;
+/* === HEADER (NAVIGATION) === */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1c1c1c;
+    padding: 15px 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
 }
 
+/* LOGO */
+.logo a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* NAVIGATION MENU */
 nav {
-    background: #222;
-    padding: 10px;
+    display: flex;
 }
 
 nav a {
+    margin-left: 20px;
+    color: #bbb;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ff6600;
+}
+
+/* === MOBILE MENU (HAMBURGER) === */
+.menu-icon {
+    font-size: 24px;
     color: white;
-    margin-right: 15px;
+    cursor: pointer;
+    display: none;
+}
+
+/* MOBILE MENU TOGGLE */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+
+    nav {
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 15px;
+        border-radius: 8px;
+        flex-direction: column;
+        display: none;
+    }
+
+    nav.open {
+        display: flex;
+    }
+
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
+}
+
+/* === SEARCH BAR (EXPANDS ON CLICK) === */
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.search-icon {
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+#search-input {
+    width: 0;
+    opacity: 0;
+    padding: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    outline: none;
+    transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+.search-box.active #search-input {
+    width: 200px;
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* SEARCH DROPDOWN */
+#search-results {
+    list-style: none;
+    padding: 0;
+    margin: 10px auto;
+    width: 220px;
+    background: #1c1c1c;
+    border-radius: 5px;
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#search-results li {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+    cursor: pointer;
+}
+
+#search-results li:hover {
+    background: #333;
+}
+
+/* === HERO SECTION (HOMEPAGE) === */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(180deg, #121212, #1c1c1c);
+    padding: 80px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    max-width: 600px;
+    margin: 30px auto;
+}
+
+.hero h1 {
+    font-size: 28px;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 16px;
+    color: #bbb;
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+.hero a {
+    color: #ff6600;
     text-decoration: none;
     font-weight: bold;
 }
 
+.hero a:hover {
+    text-decoration: underline;
+}
+
+/* === BLOG AND GUIDES PAGE STYLES === */
+.page-title {
+    font-size: 26px;
+    color: white;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.page-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #1c1c1c;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* === FOOTER === */
 footer {
     text-align: center;
-    padding: 10px;
-    background: #222;
-    color: white;
+    padding: 15px;
+    background: #1c1c1c;
+    margin-top: 50px;
+    color: #bbb;
+    font-size: 14px;
+}
+
+/* === ANIMATIONS === */
+.menu-icon i {
+    transition: transform 0.3s;
+}
+
+.menu-icon.active i {
+    transform: rotate(90deg);
 }

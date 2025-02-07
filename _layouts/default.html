@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page.title }} | AstroTaca</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ site.description }}">
+    <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+    <script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/js/all.min.js"></script>
+</head>
+<body>
+
+    <!-- === NAVIGATION MENU === -->
+    <header>
+        <div class="logo">
+            <a href="/">AstroTaca</a>
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav id="nav-menu">
+            <a href="/">Home</a>
+            <a href="/about/">About</a>
+            <a href="/blog/">Blog</a>
+            <a href="/guides/">Guides</a>
+            <a href="/products/">Products</a>
+            <a href="/contact/">Contact</a>
+        </nav>
+    </header>
+
+<!-- === SEARCH ICON (Expands on Click) === -->
+<div class="search-box">
+    <i class="fas fa-search search-icon" onclick="toggleSearch()"></i>
+    <input type="text" id="search-input" placeholder="Search..." onkeyup="liveSearch()">
+    <ul id="search-results"></ul>
+</div>
+
+
+    <main>
+        {{ content }}
+    </main>
+
+    <footer>
+        <p>&copy; {{ site.time | date: '%Y' }} AstroTaca</p>
+    </footer>
+
+    <script src="{{ '/assets/main.js' | relative_url }}"></script>
+
+</body>
+</html>
