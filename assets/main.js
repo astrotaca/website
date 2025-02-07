@@ -1,99 +1,116 @@
-// === TOGGLE MOBILE MENU ===
-function toggleMenu() {
-    let nav = document.getElementById("nav-menu");
-    let icon = document.querySelector(".menu-icon i");
+// === MOBILE MENU TOGGLE ===
+function toggleMenu(){
+  const nav = document.getElementById("nav-menu");
+  const icon = document.querySelector(".menu-icon i");
 
-    // Toggle menu visibility
-    if (nav.classList.contains("open")) {
-        nav.classList.remove("open");
-        icon.classList.remove("active");
-    } else {
-        nav.classList.add("open");
-        icon.classList.add("active");
-    }
+  if(nav.classList.contains("open")){
+    nav.classList.remove("open");
+    icon.classList.remove("active");
+  } else {
+    nav.classList.add("open");
+    icon.classList.add("active");
+  }
 }
 
+// Close menu if clicked outside
+document.addEventListener("click", function(e){
+  const nav = document.getElementById("nav-menu");
+  const menuIcon = document.querySelector(".menu-icon");
+  if(!nav.contains(e.target) && !menuIcon.contains(e.target)){
+    nav.classList.remove("open");
+    let icon = document.querySelector(".menu-icon i");
+    if(icon) icon.classList.remove("active");
+  }
+});
+
+// SEARCH DATA
 const searchItems = [
-    // Regular pages
-    { name: "Home", link: "/" },
-    { name: "About", link: "/about/" },
-    { name: "Blog", link: "/blog/" },
-    { name: "Guides", link: "/guides/" },
-    { name: "Products", link: "/products/" },
-    { name: "Contact", link: "/contact/" },
-
-    // Guides (Now they link inside /guides/)
-    { name: "PixInsight Icon Setup", link: "/guides/#pixinsight-icon-setup" },
-    { name: "Flats and Darks Tutorial", link: "/guides/#flats-and-darks-tutorial" },
-    { name: "Stacking Workflow", link: "/guides/#stacking-workflow" },
-
-    // Blog Posts
-    { name: "How I Captured Andromeda", link: "/blog/capturing-andromeda/" },
-    { name: "Best Filters for Nebulae", link: "/blog/best-nebula-filters/" },
-
-    // Products
-    { name: "AstroTaca Flap Flat Panel", link: "/products/flap-flat-panel/" },
-    { name: "AstroTaca Electronic Auto Focuser", link: "/products/eaf/" },
-    { name: "AstroTaca DC Hub", link: "/products/dc-hub/" }
+  { name: "About", link: "/about/" },
+  { name: "Products", link: "/products/" },
+  { name: "Flap Flat Panel", link: "/products/flap-flat-panel/" },
+  { name: "Auto Focuser (EAF)", link: "/products/eaf/" },
+  { name: "DC Hub", link: "/products/dc-hub/" },
+  { name: "Drivers/Software", link: "/drivers/" },
+  { name: "Guides", link: "/guides/" },
+  { name: "Blog", link: "/blog/" },
+  { name: "Contact", link: "/contact/" },
+  { name: "FAQ", link: "/faq/" },
+  // Blog examples
+  { name: "LRGB Processing", link: "/blog/lrgb-processing/" },
+  { name: "OSC vs. Mono Cameras", link: "/blog/osc-vs-mono/" },
+  { name: "Beginner Astro Tips", link: "/blog/beginners-astro-tips/" },
+  // "ASCOM" -> drivers
+  { name: "ascom", link: "/drivers/" }
 ];
 
-// === TOGGLE SEARCH BOX ===
-function toggleSearch() {
-    let searchBox = document.querySelector(".search-box");
-    let searchInput = document.getElementById("search-input");
-
-    // Toggle search bar visibility
-    if (searchBox.classList.contains("active")) {
-        searchBox.classList.remove("active");
-        searchInput.value = "";
-        document.getElementById("search-results").style.display = "none";
-    } else {
-        searchBox.classList.add("active");
-        searchInput.focus();
-    }
+// TOGGLE SEARCH
+function toggleSearch(){
+  document.getElementById("search-input").focus();
 }
 
-// Close search when clicking outside
-document.addEventListener("click", function(event) {
-    let searchBox = document.querySelector(".search-box");
-    if (!searchBox.contains(event.target)) {
-        searchBox.classList.remove("active");
-        document.getElementById("search-results").style.display = "none";
-    }
-});
+// LIVE SEARCH
+function liveSearch(){
+  let input = document.getElementById("search-input").value.toLowerCase();
+  let results = document.getElementById("search-results");
+  results.innerHTML = "";
 
-// Close search when clicking outside
-document.addEventListener("click", function(event) {
-    let searchBox = document.querySelector(".search-box");
-    if (!searchBox.contains(event.target)) {
-        searchBox.classList.remove("active");
-        document.getElementById("search-results").style.display = "none";
-    }
-});
-
-
-function liveSearch() {
-    let input = document.getElementById("search-input").value.toLowerCase();
-    let resultsContainer = document.getElementById("search-results");
-
-    // Clear previous results
-    resultsContainer.innerHTML = "";
-    
-    if (input.length === 0) {
-        resultsContainer.style.display = "none";
-        return;
-    }
-
-    let filteredItems = searchItems.filter(item => item.name.toLowerCase().includes(input));
-
-    if (filteredItems.length > 0) {
-        resultsContainer.style.display = "block";
-        filteredItems.forEach(item => {
-            let li = document.createElement("li");
-            li.innerHTML = `<a href="${item.link}" style="color:white;text-decoration:none;">${item.name}</a>`;
-            resultsContainer.appendChild(li);
-        });
-    } else {
-        resultsContainer.style.display = "none";
-    }
+  if(input.length === 0){
+    results.classList.remove('show');
+    return;
+  }
+  let filtered = searchItems.filter(item => item.name.toLowerCase().includes(input));
+  if(filtered.length > 0){
+    filtered.forEach(item => {
+      let li = document.createElement("li");
+      li.innerHTML = `<a href="${item.link}" style="color:white;text-decoration:none;">${item.name}</a>`;
+      results.appendChild(li);
+    });
+    results.classList.add('show');
+  } else {
+    results.classList.remove('show');
+  }
 }
+document.addEventListener("click", function(e){
+  let box = document.querySelector(".search-box");
+  let list = document.getElementById("search-results");
+  if(!box.contains(e.target)){
+    list.classList.remove('show');
+  }
+});
+
+// COOKIE BANNER
+function setCookie(name, value, days){
+  const d = new Date();
+  d.setTime(d.getTime() + (days*24*60*60*1000));
+  let expires = "expires="+ d.toUTCString();
+  document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+function getCookie(name){
+  let cname = name + "=";
+  let decoded = decodeURIComponent(document.cookie);
+  let ca = decoded.split(';');
+  for(let i=0; i<ca.length; i++){
+    let c = ca[i].trim();
+    if(c.indexOf(cname) == 0){
+      return c.substring(cname.length, c.length);
+    }
+  }
+  return "";
+}
+function showCookieBanner(){
+  let banner = document.getElementById("cookie-banner");
+  if(!banner) return;
+  if(!getCookie("cookieConsent")){
+    banner.style.display = "flex";
+  }
+}
+document.addEventListener("DOMContentLoaded", function(){
+  showCookieBanner();
+  let acceptBtn = document.getElementById("cookie-accept-btn");
+  if(acceptBtn){
+    acceptBtn.addEventListener("click", function(){
+      setCookie("cookieConsent","true",365);
+      document.getElementById("cookie-banner").style.display = "none";
+    });
+  }
+});

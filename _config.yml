@@ -1,13 +1,23 @@
 title: "AstroTaca"
-description: "Astrophotography gear, guides, and blog."
-baseurl: "" 
-url: "https://astrotaca.github.io"
+description: "Astrophotography Gear & Guides"
+baseurl: ""
+url: "http://127.0.0.1:4000"
 
-# Force GitHub Pages to use the correct theme
-remote_theme: jekyll/minima
+# Blog posts => /blog/my-title/
+permalink: /blog/:title/
 
-# Enable Jekyll plugins (required for Minima)
 plugins:
   - jekyll-feed
-  - jekyll-seo-tag
-  - jekyll-sitemap
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules
+  - package.json
+  - package-lock.json
+  - yarn.lock
+
+feed:
+  path: feed
+future: true
