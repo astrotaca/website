@@ -489,16 +489,15 @@ h1,h2,h3,h4,h5 {
 
 /* === Mobile UI Enhancements === */
 @media (max-width: 768px) {
-    /* Let the logo and search box wrap to avoid cramping */
+    /* Allow the logo & search box to wrap */
     .header-left {
       flex-wrap: wrap;
     }
   
-    /* Make the search box take full width below the logo */
-    .header-left .search-box {
-      margin-top: 10px;
-      width: 100%;
-      max-width: 100%;
+    /* Keep the search bar narrower so it doesn't collide with hamburger icon */
+    .search-box {
+      max-width: 140px;
+      margin-top: 8px;
     }
   
     /* Decrease container padding for more space on small screens */
@@ -506,7 +505,7 @@ h1,h2,h3,h4,h5 {
       padding: 1rem;
     }
   
-    /* Adjust hero text sizes so it doesn’t look too large */
+    /* Scale down hero text for smaller screens */
     .hero-content h1,
     .page-hero .hero-text h1 {
       font-size: 2rem;
@@ -514,5 +513,24 @@ h1,h2,h3,h4,h5 {
     .hero-content p {
       font-size: 1rem;
     }
+  }
+  
+  /* === Accent Hover Effects === */
+.hero-button {
+    background-color: #ff6600; /* brand orange */
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  .hero-button:hover {
+    background-color: #e05500;
+  }
+  
+  /* Adjust link hover for blog titles, etc. */
+  a:hover {
+    color: #ffa64d;
   }
   
