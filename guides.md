@@ -11,6 +11,14 @@ seo_keywords: "pixinsight, stacking workflow, flats, darks, astrophotography gui
 <p>Learn how to improve your imaging workflow.</p>
 
 <div class="card-grid">
+  <a class="card" href="/guides/pixinsight-denoise/">
+    <img src="https://via.placeholder.com/600x400/383838/ffffff?text=Noise+Reduction" alt="PixInsight Noise Reduction">
+    <div class="card-content">
+      <h3>PixInsight Noise Reduction</h3>
+      <p>Comparing TGV Denoise, NoiseXTerminator, and other methods.</p>
+    </div>
+  </a>
+
   <a class="card" href="#">
     <img src="https://via.placeholder.com/600x400/383838/ffffff?text=Calibration" alt="Calibration Frames">
     <div class="card-content">
