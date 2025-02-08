@@ -73,12 +73,14 @@ header {
     max-width: 250px; /* Prevents it from stretching too far */
 }
 
-/* Mobile Fix */
+/* mobile fix */
 @media (max-width: 768px) {
+    /* Shrink the search bar on mobile so it doesn't overlap the hamburger icon */
     .search-box {
-        max-width: 180px; /* Shrinks the search bar */
+      max-width: 140px;
     }
-}
+  }
+  
 
 .search-icon {
     font-size: 18px;
@@ -532,5 +534,17 @@ h1,h2,h3,h4,h5 {
   /* Adjust link hover for blog titles, etc. */
   a:hover {
     color: #ffa64d;
+  }
+  
+  /* Page fade-in on load (already set by AOS or similar), 
+   plus fade-out on navigation */
+body {
+    background-color: #121212; /* same as your main bg color */
+    transition: opacity 0.4s ease-in-out;
+  }
+  
+  /* When this class is added, the page fades out */
+  body.fade-out {
+    opacity: 0;
   }
   
