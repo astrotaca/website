@@ -9,8 +9,8 @@ seo_keywords: "PixInsight, noise reduction, astrophotography, TGV Denoise, MLT, 
 ---
 
 <div class="page-content container" data-aos="fade-up">
-
   <h1>PixInsight Noise Reduction: TGV Denoise vs. Alternative Methods – Which One is Best?</h1>
+
   <p>
     When processing deep-sky astrophotography images, noise reduction is a crucial step to enhance details while maintaining fine structures. PixInsight offers multiple noise reduction techniques, with 
     <strong>TGV Denoise</strong> being one of the most commonly used. 
@@ -19,6 +19,7 @@ seo_keywords: "PixInsight, noise reduction, astrophotography, TGV Denoise, MLT, 
   <p>
     In this guide, we will compare TGV Denoise with alternative noise reduction methods available in PixInsight and analyze their impact on deep-sky images.
   </p>
+
   <hr />
 
   <h2>Understanding Noise in Astrophotography</h2>
@@ -32,13 +33,16 @@ seo_keywords: "PixInsight, noise reduction, astrophotography, TGV Denoise, MLT, 
     <li><strong>Gaussian Noise:</strong> A random noise pattern that appears in most long-exposure images.</li>
   </ul>
   <p>
-    TGV Denoise and other alternatives are designed to tackle different aspects of these noise types. However, each method works in its own unique way, so choosing the right one depends on your goals and data.
+    TGV Denoise and other alternatives are designed to tackle different aspects of these noise types. However, each method works in its own unique way, so choosing the right one depends on your data and goals.
   </p>
 
-  <!-- Placeholder for an optional image or diagram -->
-  <figure class="image-container" style="text-align:center; margin:2rem 0;">
-    <img src="https://via.placeholder.com/800x400/333333/ffffff?text=Noise+Examples" alt="Noise Types in Astrophotography" style="max-width:100%; height:auto;">
-    <figcaption style="color:#bbb; margin-top:0.5rem;">Example representation of noise in astro images.</figcaption>
+  <figure style="text-align:center; margin:2rem 0;">
+    <img src="https://via.placeholder.com/800x400/333333/ffffff?text=Noise+Types+in+Astrophotography" 
+         alt="Noise Types in Astrophotography" 
+         style="max-width:100%; height:auto;">
+    <figcaption style="color:#bbb; margin-top:0.5rem; font-size:0.9rem;">
+      Example representation of noise in astro images.
+    </figcaption>
   </figure>
 
   <h2>What is TGV Denoise?</h2>
@@ -73,7 +77,7 @@ seo_keywords: "PixInsight, noise reduction, astrophotography, TGV Denoise, MLT, 
   </p>
   <ol>
     <li>
-      <strong>MultiScale Linear Transform (MLT) Denoise</strong><br/>
+      <strong>MultiScale Linear Transform (MLT) Denoise</strong>  
       <em>Wavelet-based approach that tackles different spatial scales individually.</em>
       <ul>
         <li>Works by applying noise reduction at multiple scale layers.</li>
@@ -82,7 +86,7 @@ seo_keywords: "PixInsight, noise reduction, astrophotography, TGV Denoise, MLT, 
       </ul>
     </li>
     <li>
-      <strong>ACDNR (Adaptive Contrast-Driven Noise Reduction)</strong><br/>
+      <strong>ACDNR (Adaptive Contrast-Driven Noise Reduction)</strong>  
       <em>An older, “classic” noise reduction tool included in PixInsight.</em>
       <ul>
         <li>Provides separate control for luminance and chrominance noise.</li>
@@ -91,7 +95,7 @@ seo_keywords: "PixInsight, noise reduction, astrophotography, TGV Denoise, MLT, 
       </ul>
     </li>
     <li>
-      <strong>NoiseXTerminator (Third-Party Plugin)</strong><br/>
+      <strong>NoiseXTerminator (Third-Party Plugin)</strong>  
       <em>AI-based noise reduction tool by Russell Croman.</em>
       <ul>
         <li>Automated approach—just a strength slider in most cases.</li>
@@ -118,37 +122,40 @@ seo_keywords: "PixInsight, noise reduction, astrophotography, TGV Denoise, MLT, 
   <p>
     We can quantify noise reduction effectiveness using PixelMath by calculating the noise variance before and after applying each method.
   </p>
-  
-  <ol>
+
+  <ol style="margin-bottom:1.5rem;">
     <li><strong>Step 1:</strong> Measure Initial Noise Levels</li>
-    <div class="pixelmath-code-block">
-      <button class="copy-button" onclick="copyCode('var-noise')">Copy</button>
-      <pre id="var-noise" style="background:#1e1e1e; color:#fff; padding:1rem; border-radius:4px; overflow:auto;">
+    <div class="code-box" style="position:relative; margin: 1rem 0; padding: 1rem; background: #2a2a2a; border-radius:5px;">
+      <button class="paypal-button" style="position:absolute; top:8px; right:8px;" onclick="copyCode('var-noise')">Copy</button>
+      <pre id="var-noise" style="margin:0; color:#fff; font-family:monospace; overflow:auto;">
 var_noise = Med(Sqrt((mean(image) - image)^2))
       </pre>
     </div>
 
     <li><strong>Step 2:</strong> Apply TGV Denoise and Measure Noise Reduction</li>
-    <div class="pixelmath-code-block">
-      <button class="copy-button" onclick="copyCode('var-tgv')">Copy</button>
-      <pre id="var-tgv" style="background:#1e1e1e; color:#fff; padding:1rem; border-radius:4px; overflow:auto;">
+    <div class="code-box" style="position:relative; margin: 1rem 0; padding: 1rem; background: #2a2a2a; border-radius:5px;">
+      <button class="paypal-button" style="position:absolute; top:8px; right:8px;" onclick="copyCode('var-tgv')">Copy</button>
+      <pre id="var-tgv" style="margin:0; color:#fff; font-family:monospace; overflow:auto;">
 var_tgv_denoise = Med(Sqrt((mean(tgv_denoised) - tgv_denoised)^2))
       </pre>
     </div>
 
     <li><strong>Step 3:</strong> Apply MultiScale Linear Transform (MLT) Denoise and Measure Noise Reduction</li>
-    <div class="pixelmath-code-block">
-      <button class="copy-button" onclick="copyCode('var-mlt')">Copy</button>
-      <pre id="var-mlt" style="background:#1e1e1e; color:#fff; padding:1rem; border-radius:4px; overflow:auto;">
+    <div class="code-box" style="position:relative; margin: 1rem 0; padding: 1rem; background: #2a2a2a; border-radius:5px;">
+      <button class="paypal-button" style="position:absolute; top:8px; right:8px;" onclick="copyCode('var-mlt')">Copy</button>
+      <pre id="var-mlt" style="margin:0; color:#fff; font-family:monospace; overflow:auto;">
 var_mlt_denoise = Med(Sqrt((mean(mlt_denoised) - mlt_denoised)^2))
       </pre>
     </div>
   </ol>
 
-  <!-- Another optional image/placeholder if desired -->
-  <figure class="image-container" style="text-align:center; margin:2rem 0;">
-    <img src="https://via.placeholder.com/800x400/333333/ffffff?text=M42+Sample" alt="M42 Orion Nebula Sample" style="max-width:100%; height:auto;">
-    <figcaption style="color:#bbb; margin-top:0.5rem;">Sample target: M42 (Orion Nebula)</figcaption>
+  <figure style="text-align:center; margin:2rem 0;">
+    <img src="https://via.placeholder.com/800x400/333333/ffffff?text=M42+Sample" 
+         alt="M42 Orion Nebula Sample" 
+         style="max-width:100%; height:auto;">
+    <figcaption style="color:#bbb; margin-top:0.5rem; font-size:0.9rem;">
+      Sample target: M42 (Orion Nebula)
+    </figcaption>
   </figure>
 
   <h3>Results</h3>
@@ -239,7 +246,6 @@ var_mlt_denoise = Med(Sqrt((mean(mlt_denoised) - mlt_denoised)^2))
   <p>
     <em>Let us know in the comments which method works best for your astrophotography workflow!</em>
   </p>
-
 </div>
 
 <!-- Copy-to-Clipboard Script -->
