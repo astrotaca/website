@@ -8,6 +8,18 @@ seo_description: "A complete guide to noise reduction in PixInsight, comparing T
 seo_keywords: "PixInsight, noise reduction, astrophotography, TGV Denoise, MLT, NoiseXTerminator, ACDNR"
 ---
 
+<!-- Table of Contents (manual) -->
+<div class="page-content container" data-aos="fade-up" style="margin-bottom: 2rem;">
+  <h2>Table of Contents</h2>
+  <ol style="line-height:1.8;">
+    <li><a href="#understanding-noise">Understanding Noise in Astrophotography</a></li>
+    <li><a href="#what-is-tgv-denoise">What is TGV Denoise?</a></li>
+    <li><a href="#alternatives">Alternative Noise Reduction Methods</a></li>
+    <li><a href="#comparing-methods">Comparing TGV Denoise vs. Alternatives</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</div>
+
 <div class="page-content container" data-aos="fade-up">
   <h1>PixInsight Noise Reduction: TGV Denoise vs. Alternative Methods – Which One is Best?</h1>
 
@@ -22,7 +34,8 @@ seo_keywords: "PixInsight, noise reduction, astrophotography, TGV Denoise, MLT, 
 
   <hr />
 
-  <h2>Understanding Noise in Astrophotography</h2>
+  <!-- Anchor for TOC link -->
+  <h2 id="understanding-noise">Understanding Noise in Astrophotography</h2>
   <p>
     Before diving into specific noise reduction methods, it is essential to understand the different types of noise that affect astrophotography images:
   </p>
@@ -32,9 +45,6 @@ seo_keywords: "PixInsight, noise reduction, astrophotography, TGV Denoise, MLT, 
     <li><strong>Fixed Pattern Noise:</strong> Includes hot pixels and amp glow, commonly seen in DSLR and CMOS images.</li>
     <li><strong>Gaussian Noise:</strong> A random noise pattern that appears in most long-exposure images.</li>
   </ul>
-  <p>
-    TGV Denoise and other alternatives are designed to tackle different aspects of these noise types. However, each method works in its own unique way, so choosing the right one depends on your data and goals.
-  </p>
 
   <figure style="text-align:center; margin:2rem 0;">
     <img src="https://via.placeholder.com/800x400/333333/ffffff?text=Noise+Types+in+Astrophotography" 
@@ -45,7 +55,8 @@ seo_keywords: "PixInsight, noise reduction, astrophotography, TGV Denoise, MLT, 
     </figcaption>
   </figure>
 
-  <h2>What is TGV Denoise?</h2>
+  <!-- Anchor for TOC link -->
+  <h2 id="what-is-tgv-denoise">What is TGV Denoise?</h2>
   <p>
     <strong>TGV Denoise (Total Generalized Variation Denoise)</strong> is a more advanced, mathematical approach to noise reduction. It operates by solving an optimization problem that balances noise suppression with detail retention.
   </p>
@@ -71,7 +82,8 @@ seo_keywords: "PixInsight, noise reduction, astrophotography, TGV Denoise, MLT, 
     <li>Can introduce subtle artifacts if parameters are not well-adjusted.</li>
   </ul>
 
-  <h2>Alternative Noise Reduction Methods in PixInsight</h2>
+  <!-- Anchor for TOC link -->
+  <h2 id="alternatives">Alternative Noise Reduction Methods in PixInsight</h2>
   <p>
     Since <strong>EZ Denoise</strong> is no longer available, users need to explore alternative approaches for noise reduction. Below are some of the most popular options:
   </p>
@@ -105,7 +117,8 @@ seo_keywords: "PixInsight, noise reduction, astrophotography, TGV Denoise, MLT, 
     </li>
   </ol>
 
-  <h2>Comparing TGV Denoise vs. Alternative Methods</h2>
+  <!-- Anchor for TOC link -->
+  <h2 id="comparing-methods">Comparing TGV Denoise vs. Alternative Methods</h2>
   <p>
     To objectively compare <strong>TGV Denoise</strong> and these alternatives, let’s apply them to a deep-sky image and analyze the results.
   </p>
@@ -222,7 +235,8 @@ var_mlt_denoise = Med(Sqrt((mean(mlt_denoised) - mlt_denoised)^2))
     </tbody>
   </table>
 
-  <h2>Conclusion: Which One is Best?</h2>
+  <!-- Anchor for TOC link -->
+  <h2 id="conclusion">Conclusion: Which One is Best?</h2>
   <p>
     There is no definitive winner between <strong>TGV Denoise</strong> and alternative methods—each has its strengths:
   </p>
