@@ -2,6 +2,7 @@
 layout: guide
 title: "PixInsight Noise Reduction: TGV Denoise vs. Alternative Methods – Which One is Best?"
 date: 2025-02-08 10:00:00
+permalink: /guides/pixinsight-denoise/
 hero_image: "https://via.placeholder.com/1600x400/222222/ffffff?text=PixInsight+Noise+Reduction"
 seo_description: "A complete guide to noise reduction in PixInsight, comparing TGV Denoise, MultiScale Linear Transform (MLT), ACDNR, and NoiseXTerminator."
 seo_keywords: "PixInsight, noise reduction, astrophotography, TGV Denoise, MLT, NoiseXTerminator, ACDNR"
@@ -140,4 +141,4 @@ var_mlt_denoise = Med(Sqrt((mean(mlt_denoised) - mlt_denoised)^2))
     <li><a href="https://pixinsight.com/doc/tools/MultiscaleLinearTransform/MultiscaleLinearTransform.html">Multiscale Linear Transform Noise Reduction</a></li>
 </ul>
 
-<p><i>Did you find this guide useful? Let us know!</i></p>
+<p><i>Did you find this guide useful? Share your results in the comments!</i></p>
