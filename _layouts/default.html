@@ -40,7 +40,23 @@
     <main class="main-content">
       {{ content }}
     </main>
+    {% if page.layout == "post" %}
+    <aside class="right-sidebar">
+      <div class="sidebar-content">
+        <h2>Navigation</h2>
+        <nav>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/products/">Products</a></li>
+            <li><a href="/drivers/">Drivers/Software</a></li>
+            <li><a href="/guides/">Guides</a></li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+    {% endif %}
   </div>
+  
   <footer>
     <p>&copy; {{ site.time | date: '%Y' }} AstroTaca</p>
     <div class="social-links" style="margin-top:8px;">
@@ -52,10 +68,12 @@
       </a>
     </div>
   </footer>
+
   <div class="cookie-banner" id="cookie-banner" style="display:none;">
     <p>We use cookies to improve your experience. By continuing, you accept the use of cookies.</p>
     <button id="cookie-accept-btn">Accept</button>
   </div>
+  
   <script src="{{ '/assets/main.js' | relative_url }}"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init({ duration:800, once:true });</script>
