@@ -542,26 +542,26 @@ h1,h2,h3,h4,h5 {
     font-size: 17px;
 }
 
-/* ---------- Right Sidebar Adjustments ---------- */
-/* Now occupies 25% of the viewport width (1/4 of the page) */
+/* ---------- Updated Right Sidebar Adjustments ---------- */
 .right-sidebar {
-    position: fixed;              /* Fixed relative to viewport */
+    position: fixed;              /* Fixed relative to the viewport */
     top: 0;
     right: 0;
-    width: 25vw;                  /* 25% of the viewport width */
+    width: 25vw;                  /* Sidebar occupies 25% of the viewport width */
     height: 100vh;                /* Full viewport height */
     overflow-y: auto;             /* Enable scrolling if needed */
     z-index: 1000;
     background: transparent;      /* Background comes from inner elements */
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: center;          /* Vertical centering */
+    justify-content: center;      /* Horizontal centering */
 }
 
 .right-sidebar .sidebar-content {
     position: relative;
     width: 100%;
     height: 100%;
+    box-sizing: border-box;
 }
 
 /* Blurred Background Image */
@@ -595,6 +595,15 @@ h1,h2,h3,h4,h5 {
     color: #fff;
     text-align: center;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ensure inner content elements respect the sidebar boundaries */
+.right-sidebar .sidebar-inner * {
+    box-sizing: border-box;
 }
 
 .right-sidebar .sidebar-nav h2,
@@ -623,12 +632,19 @@ h1,h2,h3,h4,h5 {
 }
 
 /* ---------- Main Content Adjustments for Post Pages ---------- */
+/* Shifts main article text slightly to the left and reserves space on the right */
+body.post .content-container {
+    margin-left: 40px;  /* Adjust this value to move the text further left if needed */
+    margin-right: calc(25vw + 20px); /* Reserves space for the sidebar plus a small gap */
+}
+
+
+/* ---------- Main Content Adjustments for Post Pages ---------- */
 /* On pages with the 'post' layout, add extra right margin so the text doesn't run into the sidebar */
 body.post .content-container {
     margin-right: calc(25vw + 20px); /* Sidebar width plus a small gap */
 }
 
-  
 /* Fullscreen Hero Image */
 .page-hero {
     position: relative;
@@ -713,4 +729,3 @@ body {
   body.fade-out {
     opacity: 0;
   }
-  
