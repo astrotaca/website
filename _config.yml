@@ -25,6 +25,7 @@ exclude:
 # Permalinks (For SEO-friendly URLs)
 permalink: /guides/:title/
 
+
 # Navigation Links
 navbar_links:
   - title: "About"
