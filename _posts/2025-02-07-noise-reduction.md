@@ -43,6 +43,14 @@ TGV Denoise (Total Generalized Variation Denoise) is a more advanced, mathematic
 - ❌ More computationally intensive, which can slow down processing.
 - ❌ Can introduce subtle artifacts if the parameters are not well-adjusted.
 
+## Before and After
+
+<div class="before-after">
+  <img src="/assets/images/before.jpg" alt="Before">
+  <img src="/assets/images/after.jpg" alt="After">
+</div>
+
+
 ## Alternative Noise Reduction Methods in PixInsight
 
 Since EZ Denoise is no longer available, users need to explore alternative approaches for noise reduction. Below are some of the best options:

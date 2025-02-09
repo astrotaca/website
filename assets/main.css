@@ -499,21 +499,129 @@ h1,h2,h3,h4,h5 {
   /* Before and After Image Section */
   .before-after {
     display: flex;
-    flex-wrap: wrap;
     gap: 20px;
-    margin: 2rem 0;
+    justify-content: center;
+    margin: 30px 0;
   }
   
   .before-after img {
-    width: calc(50% - 10px);
-    border: 2px solid #444;
+    width: 48%;
     border-radius: 8px;
+    border: 2px solid #444;
   }
   
   @media (max-width: 768px) {
+    .before-after {
+      flex-direction: column;
+    }
     .before-after img {
       width: 100%;
     }
+  }
+  
+  
+  /* Content Layout */
+.content-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Main Content */
+  .main-content {
+    flex: 2;
+    max-width: 800px;
+    padding-right: 20px;
+  }
+  
+  /* Right Sidebar */
+  .right-sidebar {
+    flex: 1;
+    background: #1c1c1c;
+    padding: 20px;
+    border-radius: 8px;
+    position: sticky;
+    top: 80px;
+    height: fit-content;
+  }
+  
+  /* Sidebar Content */
+  .sidebar-content {
+    text-align: left;
+  }
+  
+  .right-sidebar h2 {
+    font-size: 20px;
+    color: white;
+    margin-bottom: 15px;
+  }
+  
+  .right-sidebar nav a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 8px 0;
+    font-size: 16px;
+  }
+  
+  .right-sidebar nav a:hover {
+    color: #ff6600;
+  }
+  
+  .right-sidebar .social-links {
+    margin-top: 15px;
+  }
+  
+  .right-sidebar .social-links a {
+    color: white;
+    font-size: 22px;
+    margin-right: 10px;
+  }
+  
+  /* Mobile Adjustments */
+  @media (max-width: 768px) {
+    .content-container {
+      flex-direction: column;
+    }
+    .main-content {
+      padding-right: 0;
+    }
+    .right-sidebar {
+      position: static;
+      width: 100%;
+      margin-top: 20px;
+    }
+  }
+  
+/* Hero Image */
+.page-hero {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .page-hero .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .page-hero .hero-text {
+    position: relative;
+    z-index: 1;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
   }
   
 

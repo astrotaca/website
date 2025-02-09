@@ -11,13 +11,26 @@ layout: default
   </div>
 {% endif %}
 
-<div class="page-content container" data-aos="fade-up">
-  {% unless page.hero_image %}
+<div class="content-container">
+  <main class="main-content">
     <h1>{{ page.title }}</h1>
-  {% endunless %}
-  <p><small>Published on {{ page.date | date: '%B %d, %Y' }}</small></p>
-  <hr />
-  <div class="post-content">
-    {{ content }}
-  </div>
+    <p><small>Published on {{ page.date | date: '%B %d, %Y' }}</small></p>
+    <hr />
+    <div class="post-content">
+      {{ content }}
+    </div>
+  </main>
+
+  <aside class="right-sidebar">
+    <div class="sidebar-content">
+      <h3>Table of Contents</h3>
+      <ul>
+        <li><a href="#understanding-noise">Understanding Noise</a></li>
+        <li><a href="#tgv-denoise">What is TGV Denoise?</a></li>
+        <li><a href="#alternative-methods">Alternative Methods</a></li>
+        <li><a href="#comparison">Comparison</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+    </div>
+  </aside>
 </div>
