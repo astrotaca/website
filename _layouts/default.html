@@ -50,20 +50,25 @@
     <main class="main-content">
       {{ content }}
     </main>
-    {% if page.layout == "post" %}
-    <aside class="right-sidebar">
-      <div class="sidebar-content">
-        <div class="sidebar-background" style="background-image: url('/assets/images/sidebar-background.jpg');">
-          <div class="sidebar-overlay"></div>
-          <div class="sidebar-nav">
-            <h2>Navigation</h2>
-            <ul>
-              <li><a href="/about/">About</a></li>
-              <li><a href="/products/">Products</a></li>
-              <li><a href="/drivers/">Drivers/Software</a></li>
-              <li><a href="/guides/">Guides</a></li>
-            </ul>
-          </div>
+  </div>
+  
+  {% if page.layout == "post" %}
+  <aside class="right-sidebar">
+    <div class="sidebar-content">
+      <!-- Blurred Background & Overlay -->
+      <div class="sidebar-background" style="background-image: url('/assets/images/sidebar-background.jpg');"></div>
+      <div class="sidebar-overlay"></div>
+      
+      <!-- Centered Sidebar Content -->
+      <div class="sidebar-inner">
+        <div class="sidebar-nav">
+          <h2>Navigation</h2>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/products/">Products</a></li>
+            <li><a href="/drivers/">Drivers/Software</a></li>
+            <li><a href="/guides/">Guides</a></li>
+          </ul>
         </div>
         <div class="sidebar-info">
           <h3>Description</h3>
@@ -73,16 +78,16 @@
             {% assign headings = content | split: '<h2>' %}
             {% for section in headings offset: 1 %}
               {% assign heading_title = section | split: '</h2>' | first %}
-              {% assign heading_id = heading_title | downcase | replace: " ", "-" %}
+              {% assign heading_id = heading_title | slugify %}
               <li><a href="#{{ heading_id }}">{{ heading_title }}</a></li>
             {% endfor %}
           </ul>
         </div>
       </div>
-    </aside>
-    {% endif %}
-  </div>
-  
+    </div>
+  </aside>
+  {% endif %}
+
   <footer>
     <p>&copy; {{ site.time | date: '%Y' }} AstroTaca</p>
     <div class="social-links" style="margin-top:8px;">
