@@ -542,50 +542,17 @@ h1,h2,h3,h4,h5 {
     font-size: 17px;
 }
 
-/* Updated Full Height Right Sidebar with Blurred Background */
+/* ---------- Right Sidebar Adjustments ---------- */
+/* Now occupies 25% of the viewport width (1/4 of the page) */
 .right-sidebar {
-    position: fixed;              /* Fix sidebar relative to viewport */
+    position: fixed;              /* Fixed relative to viewport */
     top: 0;
     right: 0;
-    width: 280px;                 /* Adjust width if needed */
+    width: 25vw;                  /* 25% of the viewport width */
     height: 100vh;                /* Full viewport height */
-    overflow-y: auto;             /* Allow scrolling if content overflows */
+    overflow-y: auto;             /* Enable scrolling if needed */
     z-index: 1000;
-    background: transparent;      /* No solid background, letting the image show */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.right-sidebar .sidebar-content {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-/* Blurred Background Image */
-.right-sidebar .sidebar-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    filter: blur(8px);
-    z-index: 1;
-}
-
-/* Updated Full Height Right Sidebar with Blurred Background */
-.right-sidebar {
-    position: fixed;              /* Fix sidebar relative to viewport */
-    top: 0;
-    right: 0;
-    width: 280px;                 /* Adjust width if needed */
-    height: 100vh;                /* Full viewport height */
-    overflow-y: auto;             /* Enable scrolling if content overflows */
-    z-index: 1000;
-    background: transparent;      /* Let the background image show */
+    background: transparent;      /* Background comes from inner elements */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -655,6 +622,12 @@ h1,h2,h3,h4,h5 {
     color: #ffa64d;
 }
 
+/* ---------- Main Content Adjustments for Post Pages ---------- */
+/* On pages with the 'post' layout, add extra right margin so the text doesn't run into the sidebar */
+body.post .content-container {
+    margin-right: calc(25vw + 20px); /* Sidebar width plus a small gap */
+}
+
   
 /* Fullscreen Hero Image */
 .page-hero {
@@ -681,9 +654,6 @@ h1,h2,h3,h4,h5 {
     max-width: 90%;
     font-weight: 600;
 }
-
-
-  
 
 /* === Mobile UI Enhancements === */
 @media (max-width: 768px) {
