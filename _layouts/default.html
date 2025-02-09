@@ -9,17 +9,15 @@
   <meta name="keywords" content="{{ page.seo_keywords | default: 'astrophotography, astro gear, telescopes, eaf, flat panel, astro brand' }}">
 
   <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
-
   <script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/js/all.min.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 </head>
 <body>
-
   {% if page.layout != "post" %}
   <header>
     <div class="header-left">
       <div class="logo">
-        <a href="/" style="color:#fff; font-size:24px; font-weight:bold; text-decoration:none;">AstroTaca</a>
+        <a href="/" class="logo-text">AstroTaca</a>
       </div>
       <div class="search-box always-visible">
         <i class="fas fa-search search-icon" onclick="toggleSearch()"></i>
@@ -32,6 +30,14 @@
       <a href="/products/">Products</a>
       <a href="/drivers/">Drivers/Software</a>
       <a href="/guides/">Guides</a>
+      <div class="nav-dropdown">
+        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+          <input type="hidden" name="cmd" value="_cart">
+          <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL@domain.com">
+          <input type="hidden" name="display" value="1">
+          <button class="nav-dropbtn"><i class="fab fa-paypal"></i> View Cart</button>
+        </form>
+      </div>
     </nav>
   </header>
   {% endif %}
@@ -53,8 +59,6 @@
             <li><a href="/guides/">Guides</a></li>
           </ul>
         </nav>
-      </div>
-      <div class="table-of-contents">
         <h3>Table of Contents</h3>
         <ul>
           {% assign headings = content | split: '<h2>' %}
@@ -71,17 +75,13 @@
   
   <footer>
     <p>&copy; {{ site.time | date: '%Y' }} AstroTaca</p>
-    <div class="social-links" style="margin-top:8px;">
-      <a href="https://github.com/astrotaca" target="_blank" style="color:#ff6600; margin-right:10px;">
-        <i class="fab fa-github"></i> GitHub
-      </a>
-      <a href="https://www.instagram.com/astrotaca/" target="_blank" style="color:#ff6600;">
-        <i class="fab fa-instagram"></i> Instagram
-      </a>
+    <div class="social-links">
+      <a href="https://github.com/astrotaca" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://www.instagram.com/astrotaca/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
     </div>
   </footer>
 
-  <div class="cookie-banner" id="cookie-banner" style="display:none;">
+  <div class="cookie-banner" id="cookie-banner">
     <p>We use cookies to improve your experience. By continuing, you accept the use of cookies.</p>
     <button id="cookie-accept-btn">Accept</button>
   </div>
