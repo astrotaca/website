@@ -67,48 +67,43 @@
           <div class="sidebar-nav">
             <h2>Navigation</h2>
             <ul>
-              <li><a href="/about/">About</a></li>
+              <li><a href="/">Home</a></li>
+              <li><a href="/guides/">Guides</a></li>
               <li><a href="/products/">Products</a></li>
               <li><a href="/drivers/">Drivers/Software</a></li>
-              <li><a href="/guides/">Guides</a></li>
             </ul>
           </div>
-          <div class="sidebar-info">
-            <h3>Description</h3>
-            <p>{{ page.description }}</p>
-            {% if content contains "<h2>" %}
-            <h3>Table of Contents</h3>
-            <ul>
-              {% assign headings = content | split: '<h2>' %}
-              {% for section in headings offset: 1 %}
-                {% assign heading_title = section | split: '</h2>' | first %}
-                {% assign heading_id = heading_title | slugify %}
-                <li><a href="#{{ heading_id }}">{{ heading_title }}</a></li>
-              {% endfor %}
-            </ul>
-            {% endif %}
-          </div>
+          <!-- (Optional: Remove any extra sidebar-info blocks if not needed) -->
         </div>
       </div>
     </aside>
     {% endif %}
 
-<!-- Footer -->
-<div class="social-links" style="text-align: center; margin-top:8px;">
-  <div class="social-wrapper">
-    <div class="icon-wrapper">
-      <a href="https://github.com/astrotaca" target="_blank" class="social-icon github">
-        <i class="fab fa-github"></i>
-      </a>
-      <a href="https://astrobin.com/yourastrobin" target="_blank" class="social-icon astrobin">
-        <i class="fa fa-camera-retro"></i>
-      </a>
-      <a href="https://www.instagram.com/astrotaca/" target="_blank" class="social-icon instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-    </div>
+    <!-- Footer -->
+    <footer>
+      <p>&copy; {{ site.time | date: '%Y' }} AstroTaca</p>
+      <div class="social-links" style="text-align: center; margin-top:8px;">
+        <div class="social-wrapper">
+          <div class="icon-wrapper">
+            <a href="https://github.com/astrotaca" target="_blank" class="social-icon github">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://astrobin.com/yourastrobin" target="_blank" class="social-icon astrobin">
+              <i class="fa fa-camera-retro"></i>
+            </a>
+            <a href="https://www.instagram.com/astrotaca/" target="_blank" class="social-icon instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+          <div class="social-line-wrapper">
+            <div class="social-line github-seg"></div>
+            <div class="social-line astrobin-seg"></div>
+            <div class="social-line instagram-seg"></div>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
-</div>
 
   <div class="cookie-banner" id="cookie-banner" style="display:none;">
     <p>We use cookies to improve your experience. By continuing, you accept the use of cookies.</p>

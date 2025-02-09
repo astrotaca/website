@@ -3,43 +3,62 @@ layout: default
 title: "AstroTaca"
 seo_description: "AstroTaca - Astrophotography Gear, Guides, and More"
 seo_keywords: "astrophotography gear, EAF, flat panel, DC hub, astro guides"
+hero_image: "/assets/images/hero.jpg"
 ---
 
-<!-- Hero -->
+<!-- Hero Section -->
+{% if page.hero_image %}
+<div class="hero" style="background-image: url('{{ page.hero_image }}');" data-aos="fade-in">
+  <div class="hero-overlay" style="background: rgba(0,0,0,0.4);"></div>
+  <div class="hero-content">
+    <h1>{{ page.title }}</h1>
+    <p>Astrophotography gear, guides, and more!</p>
+  </div>
+</div>
+{% else %}
 <div class="hero" data-aos="fade-in">
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <h1>Welcome to AstroTaca</h1>
-    <p>Explore astrophotography gear, guides, and more!</p>
+    <h1>{{ page.title }}</h1>
+    <p>Astrophotography gear, guides, and more!</p>
   </div>
 </div>
+{% endif %}
+
 
 <!-- Featured Articles -->
 <section class="home-intro" data-aos="fade-up">
   <h2>Featured Articles</h2>
   <p>Check out our blog posts!</p>
   <div class="featured-grid">
-    <a class="featured-card" href="{{ '/blog/lrgb-processing/' | relative_url }}">
-      <img src="https://via.placeholder.com/600x400/2f2f2f/ffffff?text=LRGB+Processing" alt="LRGB Processing"/>
+
+    <!-- Featured Card 1: PixInsight Noise Reduction -->
+    <a class="featured-card" href="{{ '/blog/noise-reduction/' | relative_url }}">
+      <img src="https://via.placeholder.com/600x400/2f2f2f/ffffff?text=PixInsight+Noise+Reduction" alt="PixInsight Noise Reduction"/>
       <div class="featured-content">
-        <h3>LRGB Processing</h3>
-        <p>Combine luminance & color channels for vibrant images.</p>
+        <h3>PixInsight Noise Reduction</h3>
+        <p>Optimize your astrophotography images with advanced noise reduction techniques.</p>
       </div>
     </a>
-    <a class="featured-card" href="{{ '/blog/osc-vs-mono/' | relative_url }}">
-      <img src="https://via.placeholder.com/600x400/444444/ffffff?text=OSC+vs+Mono" alt="OSC vs. Mono"/>
+    
+    <!-- Featured Card 2: Comparison of Stacking Algorithms -->
+    <a class="featured-card" href="{{ '/blog/stacking-algorithms/' | relative_url }}">
+      <img src="{{ '/assets/images/stacking-algorithms.jpg' | relative_url }}" alt="Comparison of Stacking Algorithms"/>
       <div class="featured-content">
-        <h3>OSC vs. Mono Cameras</h3>
-        <p>Pros & cons of color vs. monochrome setups.</p>
+        <h3>Comparison of Stacking Algorithms</h3>
+        <p>Discover the best stacking techniques for enhancing your astrophotography workflow.</p>
       </div>
     </a>
+    
+    <!-- Featured Card 3: Beginner Astro Tips -->
     <a class="featured-card" href="{{ '/blog/beginners-astro-tips/' | relative_url }}">
-      <img src="https://via.placeholder.com/600x400/3a3a3a/ffffff?text=Beginner+Tips" alt="Beginner Astro Tips"/>
+      <img src="{{ '/assets/images/beginners-astro-tips.jpg' | relative_url }}" alt="Beginner Astro Tips"/>
       <div class="featured-content">
         <h3>Beginner Astro Tips</h3>
         <p>Essential guidance for new astrophotographers.</p>
       </div>
     </a>
+    
   </div>
 </section>
 

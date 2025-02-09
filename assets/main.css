@@ -657,12 +657,11 @@ body.post .main-content {
     margin-left: 0; /* Aligns properly with the sidebar */
 }
 
-
 /* ---------- Updated Right Sidebar Adjustments ---------- */
 .right-sidebar {
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     width: 25vw;
     min-width: 280px;
     max-width: 100%; /* Prevents it from exceeding viewport width */
@@ -675,7 +674,6 @@ body.post .main-content {
     align-items: center;
     justify-content: center;
 }
-
 
 .right-sidebar .sidebar-content {
     position: relative;
@@ -693,7 +691,6 @@ body.post .main-content {
     height: 100%;
     background-size: cover;
     background-position: center;
-    filter: blur(8px);
     z-index: 1;
 }
 
@@ -757,6 +754,17 @@ body.post .main-content {
 .right-sidebar ul li a:hover {
     color: #ffa64d;
 }
+
+/* Apply zoom hover effect to the sidebar navigation links */
+.sidebar-nav ul li a {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .sidebar-nav ul li a:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  }
+  
 
 /* ---------- Main Content Adjustments for Post Pages ---------- */
 /* Adjust Main Content for Post Pages */
