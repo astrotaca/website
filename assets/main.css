@@ -525,21 +525,21 @@ h1,h2,h3,h4,h5 {
   }
   
   
-  .guides-container .content-container {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1200px;
+/* ONLY AFFECT GUIDES POSTS */
+body.post .content-container {
+    max-width: 1300px; /* Increase max width */
+    width: 90%; /* Ensure it takes more space */
     display: flex;
+    justify-content: center;
 }
 
-  
-  .guides-container .main-content {
-    max-width: 1500px; /* Wider */
-    width: 80%;
-    margin: 0 auto;
+/* Expand the main content for guides */
+body.post .main-content {
+    max-width: 900px; /* Increase width for better readability */
+    width: 70%;
     padding: 20px;
-    line-height: 1.7;
-    font-size: 17px;
+    font-size: 18px; /* Improve text readability */
+    line-height: 1.8; /* Improve spacing */
 }
 
 
