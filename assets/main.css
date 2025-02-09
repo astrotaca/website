@@ -492,11 +492,13 @@ h1,h2,h3,h4,h5 {
 }
 
 /* Constrain post content width */
-.post-content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 1rem;
+.post-content img {
+    display: block;
+    max-width: 100%;
+    margin: 20px auto;
+    border-radius: 8px;
   }
+  
   
   /* Before and After Image Section */
   .before-after {
@@ -530,15 +532,20 @@ h1,h2,h3,h4,h5 {
     padding: 20px;
   }
   
-  /* Main Content */
-  .main-content {
+/* Main Content Layout */
+.main-content {
     flex: 2;
     max-width: 800px;
-    padding-right: 20px;
+    margin: 0 auto;
+    padding: 20px;
+    line-height: 1.6;
+    font-size: 18px;
   }
   
-  /* Right Sidebar */
-  .right-sidebar {
+  
+  
+/* Right Sidebar */
+.right-sidebar {
     flex: 1;
     background: #1c1c1c;
     padding: 20px;
@@ -546,6 +553,7 @@ h1,h2,h3,h4,h5 {
     position: sticky;
     top: 80px;
     height: fit-content;
+    max-width: 300px;
   }
   
   /* Sidebar Content */
@@ -553,33 +561,32 @@ h1,h2,h3,h4,h5 {
     text-align: left;
   }
   
-  .right-sidebar h2 {
+  .right-sidebar h3 {
     font-size: 20px;
     color: white;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
   
-  .right-sidebar nav a {
-    display: block;
-    color: white;
-    text-decoration: none;
-    padding: 8px 0;
+  .right-sidebar p {
+    color: #bbb;
     font-size: 16px;
+    line-height: 1.4;
   }
   
-  .right-sidebar nav a:hover {
+  .right-sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .right-sidebar ul li {
+    padding: 5px 0;
+  }
+  
+  .right-sidebar ul li a {
     color: #ff6600;
+    text-decoration: none;
   }
   
-  .right-sidebar .social-links {
-    margin-top: 15px;
-  }
-  
-  .right-sidebar .social-links a {
-    color: white;
-    font-size: 22px;
-    margin-right: 10px;
-  }
   
   /* Mobile Adjustments */
   @media (max-width: 768px) {
@@ -596,11 +603,11 @@ h1,h2,h3,h4,h5 {
     }
   }
   
-/* Hero Image */
+/* Fullscreen Hero Image */
 .page-hero {
     position: relative;
     width: 100%;
-    height: 300px;
+    height: 350px;
     background-size: cover;
     background-position: center;
     display: flex;
@@ -610,8 +617,6 @@ h1,h2,h3,h4,h5 {
   
   .page-hero .hero-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
@@ -619,11 +624,9 @@ h1,h2,h3,h4,h5 {
   
   .page-hero .hero-text {
     position: relative;
-    z-index: 1;
     color: white;
-    font-size: 28px;
+    font-size: 32px;
     font-weight: bold;
-    text-align: center;
   }
   
 
