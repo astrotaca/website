@@ -2,22 +2,37 @@
 layout: default
 ---
 
-{% if page.hero_image %}
-  <div class="page-hero" style="background-image:url('{{ page.hero_image }}');" data-aos="fade-in">
-    <div class="hero-overlay"></div>
-    <div class="hero-text">
-      <h1>{{ page.title }}</h1>
-    </div>
-  </div>
-{% endif %}
+<div class="page-content container" data-aos="fade-up">
 
-<div class="content-container">
-  <main class="main-content">
-    <p><small>Published on {{ page.date | date: '%B %d, %Y' }}</small></p>
-    <hr />
-    <div class="post-content">
-      {{ content }}
+  {% if page.hero_image %}
+    <div class="page-hero" style="background-image:url('{{ page.hero_image }}');" data-aos="fade-in">
+      <div class="hero-overlay"></div>
+      <div class="hero-text">
+        <h1>{{ page.title }}</h1>
+      </div>
     </div>
-  </main>
-  <!-- No sidebar here; the default layout will provide the large sidebar -->
+  {% endif %}
+
+  <div class="content-container">
+    <main class="main-content">
+      <p><small>Published on {{ page.date | date: '%B %d, %Y' }}</small></p>
+      <hr />
+      
+      <div class="post-content">
+        <!-- Fix broken images with JS -->
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".post-content img").forEach(img => {
+              img.onerror = function () {
+                this.style.display = "none";  // Hide broken images
+              };
+            });
+          });
+        </script>
+
+        {{ content }}
+      </div>
+    </main>
+  </div>
+
 </div>

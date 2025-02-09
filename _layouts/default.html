@@ -73,6 +73,7 @@
         <div class="sidebar-info">
           <h3>Description</h3>
           <p>{{ page.description }}</p>
+          {% if page.layout == "post" and content contains "<h2>" %}
           <h3>Table of Contents</h3>
           <ul>
             {% assign headings = content | split: '<h2>' %}
@@ -82,6 +83,7 @@
               <li><a href="#{{ heading_id }}">{{ heading_title }}</a></li>
             {% endfor %}
           </ul>
+          {% endif %}
         </div>
       </div>
     </div>

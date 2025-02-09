@@ -1,26 +1,50 @@
 ---
-layout: page
-title: "Guides"
-permalink: /guides/
-hero_image: "https://via.placeholder.com/1600x400/222222/ffffff?text=AstroTaca+Guides"
-seo_description: "AstroTaca Guides - Astrophotography articles & tutorials"
-seo_keywords: "astrophotography guides, astro tutorials, astrophotography articles"
+layout: default
 ---
 
-<div class="guides-container">
-  <h2>Latest Blog Posts</h2>
-  <p>Check out our articles below!</p>
+<div class="page-content container" data-aos="fade-up">
 
-  <div class="card-grid">
-    {% for post in site.posts %}
-      <a class="card guide-post" href="{{ post.url }}">
-        <img src="https://via.placeholder.com/600x400/555555/ffffff?text={{ post.title | escape }}" alt="{{ post.title }}">
-        <div class="card-content">
-          <h3>{{ post.title }}</h3>
-          <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
-        </div>
-      </a>
-    {% endfor %}
-  </div>
+  {% if page.hero_image %}
+    <div class="page-hero" style="background-image:url('{{ page.hero_image }}');" data-aos="fade-in">
+      <div class="hero-overlay"></div>
+      <div class="hero-text">
+        <h1>{{ page.title }}</h1>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="content-container">
+    <main class="main-content">
+      <p><small>Published on {{ page.date | date: '%B %d, %Y' }}</small></p>
+      <hr />
+      
+      <div class="post-content">
+        <!-- Fix broken images with JS -->
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".post-content img").forEach(img => {
+              img.onerror = function () {
+                this.style.display = "none";  // Hide broken images
+              };
+            });
+          });
+        </script>
+
+        {{ content }}
+      </div>
+    </main>
+
+    <!-- Sidebar (Now only contains sidebar elements, no duplicate nav) -->
+    <aside class="right-sidebar">
+      <div class="sidebar-inner">
+        <h2>Navigation</h2>
+        <ul>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/products/">Products</a></li>
+          <li><a href="/drivers/">Drivers/Software</a></li>
+          <li><a href="/guides/">Guides</a></li>
+        </ul>
+      </div>
+    </aside>
+
 </div>
-
