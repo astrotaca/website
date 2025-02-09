@@ -54,6 +54,17 @@
           </ul>
         </nav>
       </div>
+      <div class="table-of-contents">
+        <h3>Table of Contents</h3>
+        <ul>
+          {% assign headings = content | split: '<h2>' %}
+          {% for section in headings offset: 1 %}
+            {% assign heading_title = section | split: '</h2>' | first %}
+            {% assign heading_id = heading_title | downcase | replace: " ", "-" %}
+            <li><a href="#{{ heading_id }}">{{ heading_title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
     </aside>
     {% endif %}
   </div>
