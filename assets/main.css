@@ -632,11 +632,11 @@ h1,h2,h3,h4,h5 {
 }
 
 /* ---------- Main Content Adjustments for Post Pages ---------- */
-/* Shifts main article text slightly to the left and reserves space on the right */
+/* Adjust Main Content for Post Pages */
 body.post .content-container {
-    margin-left: 20px;              /* A modest margin on the left */
-    margin-right: calc(25vw + 20px);  /* Reserves space for the sidebar plus a small gap */
-    max-width: none;                /* Allow the container to span the full available width */
+    margin-left: 50px;              /* Increase left margin so text doesn't start too far left */
+    margin-right: calc(25vw + 5px);   /* Reserve space for the 25vw sidebar plus a small gap */
+    max-width: none;                /* Allow the container to use all available width */
 }
 
 /* Fullscreen Hero Image */
