@@ -525,22 +525,23 @@ h1,h2,h3,h4,h5 {
   }
   
   
-  /* Content Layout */
-.content-container {
-    display: flex;
+  .guides-container .content-container {
+    margin-left: auto;
+    margin-right: auto;
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
+    display: flex;
+}
+
   
-/* Main Content Layout */
-.main-content {
-    max-width: 750px;
+  .guides-container .main-content {
+    max-width: 1000px; /* Wider */
+    width: 80%;
     margin: 0 auto;
     padding: 20px;
     line-height: 1.7;
     font-size: 17px;
 }
+
 
 /* ---------- Updated Right Sidebar Adjustments ---------- */
 .right-sidebar {
@@ -634,7 +635,7 @@ h1,h2,h3,h4,h5 {
 /* ---------- Main Content Adjustments for Post Pages ---------- */
 /* Adjust Main Content for Post Pages */
 body.post .content-container {
-    margin-left: 70px;              /* Increase left margin so text doesn't start too far left */
+    margin-left: 50px;              /* Increase left margin so text doesn't start too far left */
     margin-right: calc(25vw + 5px);   /* Reserve space for the 25vw sidebar plus a small gap */
     max-width: none;                /* Allow the container to use all available width */
 }
