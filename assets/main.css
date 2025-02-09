@@ -634,15 +634,9 @@ h1,h2,h3,h4,h5 {
 /* ---------- Main Content Adjustments for Post Pages ---------- */
 /* Shifts main article text slightly to the left and reserves space on the right */
 body.post .content-container {
-    margin-left: 40px;  /* Adjust this value to move the text further left if needed */
-    margin-right: calc(25vw + 20px); /* Reserves space for the sidebar plus a small gap */
-}
-
-
-/* ---------- Main Content Adjustments for Post Pages ---------- */
-/* On pages with the 'post' layout, add extra right margin so the text doesn't run into the sidebar */
-body.post .content-container {
-    margin-right: calc(25vw + 20px); /* Sidebar width plus a small gap */
+    margin-left: 20px;              /* A modest margin on the left */
+    margin-right: calc(25vw + 20px);  /* Reserves space for the sidebar plus a small gap */
+    max-width: none;                /* Allow the container to span the full available width */
 }
 
 /* Fullscreen Hero Image */
