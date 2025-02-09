@@ -90,71 +90,25 @@ var_tgv_denoise = Med(Sqrt((mean(tgv_denoised) - tgv_denoised)^2))
 var_mlt_denoise = Med(Sqrt((mean(mlt_denoised) - mlt_denoised)^2))
 
 
+
 ### Results
 
-<table>
-  <thead>
-    <tr>
-      <th>Method</th>
-      <th>Noise Reduction (Variance)</th>
-      <th>Detail Preservation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>TGV Denoise</td>
-      <td>Excellent (Variance reduced by ~50%)</td>
-      <td>High</td>
-    </tr>
-    <tr>
-      <td>MLT Denoise</td>
-      <td>Good (Variance reduced by ~40%)</td>
-      <td>Moderate</td>
-    </tr>
-    <tr>
-      <td>NoiseXTerminator</td>
-      <td>Best (Variance reduced by ~60%)</td>
-      <td>Very High</td>
-    </tr>
-  </tbody>
-</table>
+| Method           | Noise Reduction (Variance)            | Detail Preservation |
+| ---------------- | ------------------------------------- | ------------------- |
+| TGV Denoise      | Excellent (Variance reduced by ~50%)  | High                |
+| MLT Denoise      | Good (Variance reduced by ~40%)       | Moderate            |
+| NoiseXTerminator | Best (Variance reduced by ~60%)       | Very High           |
 
 ### When to Use Each Method
 
-<table>
-  <thead>
-    <tr>
-      <th>Scenario</th>
-      <th>Recommended Method</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Quick, effective noise reduction with minimal effort</td>
-      <td>NoiseXTerminator</td>
-    </tr>
-    <tr>
-      <td>Fine-tuned noise control for deep-sky objects</td>
-      <td>TGV Denoise</td>
-    </tr>
-    <tr>
-      <td>Linear images (pre-stretching)</td>
-      <td>TGV Denoise / MLT</td>
-    </tr>
-    <tr>
-      <td>Non-linear images (post-stretching)</td>
-      <td>ACDNR / NoiseXTerminator</td>
-    </tr>
-    <tr>
-      <td>Preserving edge details in galaxies</td>
-      <td>TGV Denoise</td>
-    </tr>
-    <tr>
-      <td>Reducing chrominance noise in nebulae</td>
-      <td>NoiseXTerminator / ACDNR</td>
-    </tr>
-  </tbody>
-</table>
+| Scenario                                           | Recommended Method         |
+| -------------------------------------------------- | -------------------------- |
+| Quick, effective noise reduction with minimal effort | NoiseXTerminator        |
+| Fine-tuned noise control for deep-sky objects      | TGV Denoise               |
+| Linear images (pre-stretching)                       | TGV Denoise / MLT        |
+| Non-linear images (post-stretching)                 | ACDNR / NoiseXTerminator  |
+| Preserving edge details in galaxies                | TGV Denoise               |
+| Reducing chrominance noise in nebulae               | NoiseXTerminator / ACDNR  |
 
 ## Conclusion: Which One is Best?
 
