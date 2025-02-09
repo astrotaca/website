@@ -23,7 +23,7 @@ exclude:
   - vendor/
 
 # Permalinks (For SEO-friendly URLs)
-permalink: /blog/:title/
+permalink: /guides/:title/
 
 # Navigation Links
 navbar_links:
@@ -35,10 +35,9 @@ navbar_links:
     url: "/drivers/"
   - title: "Guides"
     url: "/guides/"
-  - title: "Blog"
-    url: "/blog/"
   - title: "Contact"
     url: "/contact/"
+
 
 # Social Links
 social:

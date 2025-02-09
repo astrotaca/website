@@ -5,30 +5,23 @@
   <title>{{ page.title }} | AstroTaca</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <!-- Basic SEO / Keywords -->
   <meta name="description" content="{{ page.seo_description | default: 'AstroTaca - Astrophotography Gear & Guides' }}">
   <meta name="keywords" content="{{ page.seo_keywords | default: 'astrophotography, astro gear, telescopes, eaf, flat panel, astro brand' }}">
 
-  <!-- Main CSS -->
   <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
 
-  <!-- FontAwesome for icons -->
   <script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/js/all.min.js"></script>
 
-  <!-- AOS (Animate On Scroll) CSS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 </head>
 <body>
 
-  <!-- === HEADER (sticky) === -->
   <header>
     <div class="header-left">
-      <!-- LOGO => Home (No house icon, just text) -->
       <div class="logo">
         <a href="/" style="color:#fff; font-size:24px; font-weight:bold; text-decoration:none;">AstroTaca</a>
       </div>
 
-      <!-- SEARCH BOX -->
       <div class="search-box always-visible">
         <i class="fas fa-search search-icon" onclick="toggleSearch()"></i>
         <input type="text" id="search-input" placeholder="Search..." onkeyup="liveSearch()">
@@ -36,11 +29,9 @@
       </div>
     </div>
 
-    <!-- NAVIGATION -->
     <nav id="nav-menu">
       <a href="/about/">About</a>
 
-      <!-- PRODUCTS (dropdown) -->
       <div class="nav-dropdown">
         <a href="/products/" class="nav-dropbtn">Products <i class="fas fa-caret-down"></i></a>
         <div class="nav-dropdown-content">
@@ -52,10 +43,7 @@
 
       <a href="/drivers/">Drivers/Software</a>
       <a href="/guides/">Guides</a>
-      <a href="/blog/">Blog</a>
-      <!-- Removed "Contact" link, contact is in About now -->
 
-      <!-- PAYPAL CART -->
       <div class="nav-dropdown">
         <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
           <input type="hidden" name="cmd" value="_cart">
@@ -68,18 +56,15 @@
       </div>
     </nav>
 
-    <!-- HAMBURGER ICON (mobile) -->
     <div class="menu-icon" onclick="toggleMenu()">
       <i class="fas fa-bars"></i>
     </div>
   </header>
 
-  <!-- === MAIN CONTENT === -->
   <main>
     {{ content }}
   </main>
 
-  <!-- === FOOTER === -->
   <footer>
     <p>&copy; {{ site.time | date: '%Y' }} AstroTaca</p>
     <div class="social-links" style="margin-top:8px;">
@@ -92,16 +77,13 @@
     </div>
   </footer>
 
-  <!-- COOKIE BANNER -->
   <div class="cookie-banner" id="cookie-banner" style="display:none;">
     <p>We use cookies to improve your experience. By continuing, you accept the use of cookies.</p>
     <button id="cookie-accept-btn">Accept</button>
   </div>
 
-  <!-- Main JS -->
   <script src="{{ '/assets/main.js' | relative_url }}"></script>
 
-  <!-- AOS (Animate On Scroll) JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init({ duration:800, once:true });</script>
 </body>

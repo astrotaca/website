@@ -12,7 +12,7 @@ function toggleMenu(){
   }
 }
 
-// Close menu if clicked outside
+// Close menu if clicking outside
 document.addEventListener("click", function(e){
   const nav = document.getElementById("nav-menu");
   const menuIcon = document.querySelector(".menu-icon");
@@ -32,16 +32,16 @@ const searchItems = [
   { name: "DC Hub", link: "/products/dc-hub/" },
   { name: "Drivers/Software", link: "/drivers/" },
   { name: "Guides", link: "/guides/" },
-  { name: "Blog", link: "/blog/" },
   { name: "Contact", link: "/contact/" },
   { name: "FAQ", link: "/faq/" },
-  // Blog examples
-  { name: "LRGB Processing", link: "/blog/lrgb-processing/" },
-  { name: "OSC vs. Mono Cameras", link: "/blog/osc-vs-mono/" },
-  { name: "Beginner Astro Tips", link: "/blog/beginners-astro-tips/" },
-  // "ASCOM" -> drivers
+  
+  // Updated guide examples
+  { name: "LRGB Processing", link: "/guides/lrgb-processing/" },
+  { name: "OSC vs. Mono Cameras", link: "/guides/osc-vs-mono/" },
+  { name: "Beginner Astro Tips", link: "/guides/beginners-astro-tips/" },
   { name: "ascom", link: "/drivers/" }
 ];
+
 
 // TOGGLE SEARCH
 function toggleSearch(){
@@ -113,4 +113,28 @@ document.addEventListener("DOMContentLoaded", function(){
       document.getElementById("cookie-banner").style.display = "none";
     });
   }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Select all *internal* links (those pointing to your domain or a relative path).
+  const internalLinks = document.querySelectorAll("a[href^='/'], a[href^='" + window.location.origin + "']");
+
+  internalLinks.forEach(link => {
+    // If the link is supposed to open in a new tab or has special function, skip it.
+    // (Example: skip if link has target="_blank")
+    if (link.target === "_blank") return;
+
+    link.addEventListener("click", function(e) {
+      e.preventDefault();
+      const href = this.getAttribute("href");
+
+      // Add the fade-out class
+      document.body.classList.add("fade-out");
+
+      // Navigate after 400ms (matching the CSS transition time)
+      setTimeout(() => {
+        window.location.href = href;
+      }, 400);
+    });
+  });
 });
