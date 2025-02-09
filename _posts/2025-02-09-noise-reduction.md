@@ -27,14 +27,14 @@ TGV Denoise (Total Generalized Variation Denoise) is a more advanced, mathematic
 - Works effectively in preserving edge structures, making it suitable for images with fine details.
 
 #### Pros of TGV Denoise:
-✔ Excellent for reducing noise while keeping fine details sharp.
-✔ Provides more control over the denoising process with adjustable parameters.
-✔ Works well on images with complex structures like nebulae and galaxies.
+- ✔ Excellent for reducing noise while keeping fine details sharp.
+- ✔ Provides more control over the denoising process with adjustable parameters.
+- ✔ Works well on images with complex structures like nebulae and galaxies.
 
 #### Cons of TGV Denoise:
-❌ Requires parameter tuning, making it less beginner-friendly.
-❌ More computationally intensive, which can slow down processing.
-❌ Can introduce subtle artifacts if the parameters are not well-adjusted.
+- ❌ Requires parameter tuning, making it less beginner-friendly.
+- ❌ More computationally intensive, which can slow down processing.
+- ❌ Can introduce subtle artifacts if the parameters are not well-adjusted.
 
 ### Alternative Noise Reduction Methods in PixInsight
 Since EZ Denoise is no longer available, users need to explore alternative approaches for noise reduction. Below are some of the best options:
@@ -82,28 +82,32 @@ var_mlt_denoise = Med(Sqrt((mean(mlt_denoised) - mlt_denoised)^2))
 ```
 
 #### Results:
+
+**Noise Reduction & Detail Preservation Comparison**
+
 | Method            | Noise Reduction (Variance) | Detail Preservation |
 |------------------|--------------------------|----------------------|
-| TGV Denoise     | Excellent (~50% reduction) | High                 |
-| MLT Denoise     | Good (~40% reduction)     | Moderate             |
-| NoiseXTerminator | Best (~60% reduction)     | Very High            |
+| **TGV Denoise**     | Excellent (~50% reduction) | High                 |
+| **MLT Denoise**     | Good (~40% reduction)     | Moderate             |
+| **NoiseXTerminator** | Best (~60% reduction)     | Very High            |
 
 ### When to Use Each Method
+
 | Scenario                                   | Recommended Method          |
 |--------------------------------------------|-----------------------------|
-| Quick, effective noise reduction          | NoiseXTerminator           |
-| Fine-tuned noise control for deep-sky objects | TGV Denoise              |
-| Linear images (pre-stretching)            | TGV Denoise / MLT         |
-| Non-linear images (post-stretching)       | ACDNR / NoiseXTerminator  |
-| Preserving edge details in galaxies       | TGV Denoise               |
-| Reducing chrominance noise in nebulae     | NoiseXTerminator / ACDNR  |
+| Quick, effective noise reduction          | **NoiseXTerminator**           |
+| Fine-tuned noise control for deep-sky objects | **TGV Denoise**              |
+| Linear images (pre-stretching)            | **TGV Denoise / MLT**         |
+| Non-linear images (post-stretching)       | **ACDNR / NoiseXTerminator**  |
+| Preserving edge details in galaxies       | **TGV Denoise**               |
+| Reducing chrominance noise in nebulae     | **NoiseXTerminator / ACDNR**  |
 
 ### Conclusion: Which One is Best?
 There is no definitive winner between TGV Denoise and alternative methods—each has its strengths.
 
-- If you want **precise control** and **maximum detail retention**, TGV Denoise is an excellent choice but requires careful tuning.
-- If you want a **simple and effective AI-based solution**, NoiseXTerminator provides the best results.
-- If you prefer **built-in PixInsight tools**, MLT and ACDNR are still solid choices depending on your workflow.
+- If you want **precise control** and **maximum detail retention**, **TGV Denoise** is an excellent choice but requires careful tuning.
+- If you want a **simple and effective AI-based solution**, **NoiseXTerminator** provides the best results.
+- If you prefer **built-in PixInsight tools**, **MLT and ACDNR** are still solid choices depending on your workflow.
 
 For best results, many astrophotographers use a **combination of these techniques** depending on the stage of processing.
 
