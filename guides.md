@@ -1,11 +1,12 @@
 ---
 layout: page
-title: "Blog"
-permalink: /blog/
-hero_image: "https://via.placeholder.com/1600x400/222222/ffffff?text=AstroTaca+Blog"
-seo_description: "AstroTaca Blog - Astrophotography articles & tutorials"
-seo_keywords: "astronomy blog, astrophotography tutorials, astro guides"
+title: "Guides"
+permalink: /guides/
+hero_image: "https://via.placeholder.com/1600x400/222222/ffffff?text=AstroTaca+Guides"
+seo_description: "AstroTaca Guides - Astrophotography articles & tutorials"
+seo_keywords: "astrophotography guides, astro tutorials, astrophotography articles"
 ---
+
 
 <h2>Latest Blog Posts</h2>
 <p>Check out our articles below!</p>
