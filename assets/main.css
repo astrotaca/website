@@ -542,46 +542,49 @@ h1,h2,h3,h4,h5 {
     font-size: 17px;
 }
 
-  
-  
-  
-  .right-sidebar {
-    background: #1a1a1a;
-    padding: 20px;
-    border-radius: 8px;
+/* Updated Right Sidebar for a Clean, Minimal Look */
+.right-sidebar {
+    background: transparent;            /* Remove background color */
+    padding: 0 0 0 20px;                /* Only left padding for separation */
+    border-left: 2px solid #444;        /* Subtle left border for definition */
     position: sticky;
     top: 80px;
-    height: fit-content;
     max-width: 280px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    /* Optional: remove box-shadow if present */
+}
+
+.right-sidebar .sidebar-content {
+    padding: 0;
 }
 
 .right-sidebar h3 {
-    font-size: 18px;
-    font-weight: 600;
-    color: #fff;
+    font-size: 1.2rem;
+    margin-top: 0;
     margin-bottom: 10px;
+    border-bottom: 1px solid #444;     /* Underline headings for clarity */
+    padding-bottom: 5px;
 }
 
 .right-sidebar ul {
-    padding: 0;
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .right-sidebar ul li {
-    padding: 8px 0;
-    border-bottom: 1px solid #333;
-}
-
-.right-sidebar ul li:last-child {
-    border-bottom: none;
+    margin-bottom: 8px;
 }
 
 .right-sidebar ul li a {
     color: #ff6600;
     text-decoration: none;
-    font-weight: 500;
+    transition: color 0.3s ease;        /* Smooth color transition on hover */
 }
+
+.right-sidebar ul li a:hover {
+    color: #ffa64d;
+}
+
 
   
   /* Mobile Adjustments */
