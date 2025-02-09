@@ -11,84 +11,36 @@
   <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
 
   <script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/js/all.min.js"></script>
-
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 </head>
 <body>
 
+  {% if page.layout != "post" %}
   <header>
     <div class="header-left">
       <div class="logo">
         <a href="/" style="color:#fff; font-size:24px; font-weight:bold; text-decoration:none;">AstroTaca</a>
       </div>
-
       <div class="search-box always-visible">
         <i class="fas fa-search search-icon" onclick="toggleSearch()"></i>
         <input type="text" id="search-input" placeholder="Search..." onkeyup="liveSearch()">
         <ul id="search-results"></ul>
       </div>
     </div>
-
     <nav id="nav-menu">
       <a href="/about/">About</a>
-
-      <div class="nav-dropdown">
-        <a href="/products/" class="nav-dropbtn">Products <i class="fas fa-caret-down"></i></a>
-        <div class="nav-dropdown-content">
-          <a href="/products/flap-flat-panel/">Flap Flat Panel</a>
-          <a href="/products/eaf/">Auto Focuser (EAF)</a>
-          <a href="/products/dc-hub/">DC Hub</a>
-        </div>
-      </div>
-
+      <a href="/products/">Products</a>
       <a href="/drivers/">Drivers/Software</a>
       <a href="/guides/">Guides</a>
-
-      <div class="nav-dropdown">
-        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-          <input type="hidden" name="cmd" value="_cart">
-          <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL@domain.com">
-          <input type="hidden" name="display" value="1">
-          <button class="nav-dropbtn" style="border:none; background:none;">
-            <i class="fab fa-paypal"></i> View Cart
-          </button>
-        </form>
-      </div>
     </nav>
-
-    <div class="menu-icon" onclick="toggleMenu()">
-      <i class="fas fa-bars"></i>
-    </div>
   </header>
+  {% endif %}
 
   <div class="content-container">
     <main class="main-content">
       {{ content }}
     </main>
-  
-    <aside class="right-sidebar">
-      <div class="sidebar-content">
-        <h2>AstroTaca</h2>
-        <nav>
-          <a href="/guides/">Guides</a>
-          <a href="/blog/">Blog</a>
-          <a href="/products/">Products</a>
-          <a href="/contact/">Contact</a>
-        </nav>
-  
-        <div class="social-links">
-          <a href="https://github.com/astrotaca"><i class="fab fa-github"></i></a>
-          <a href="https://www.instagram.com/astrotaca/"><i class="fab fa-instagram"></i></a>
-        </div>
-      </div>
-    </aside>
   </div>
-  
-
-  <main>
-    {{ content }}
-  </main>
-
   <footer>
     <p>&copy; {{ site.time | date: '%Y' }} AstroTaca</p>
     <div class="social-links" style="margin-top:8px;">
@@ -100,14 +52,11 @@
       </a>
     </div>
   </footer>
-
   <div class="cookie-banner" id="cookie-banner" style="display:none;">
     <p>We use cookies to improve your experience. By continuing, you accept the use of cookies.</p>
     <button id="cookie-accept-btn">Accept</button>
   </div>
-
   <script src="{{ '/assets/main.js' | relative_url }}"></script>
-
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init({ duration:800, once:true });</script>
 </body>
