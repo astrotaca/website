@@ -1,7 +1,7 @@
 /* ========================================
-   GLOBAL 
+   GLOBAL (HTML)
 ======================================== */
-html, body {
+html {
     height: auto;
     scroll-behavior: smooth;
     margin: 0;
@@ -15,16 +15,13 @@ html, body {
     overflow-x: hidden; /* Prevents horizontal scrolling */
 }
 
-
+/* ========================================
+   GLOBAL (Body)
+======================================== */
 body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #121212;
-    color: #e0e0e0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
+    transition: opacity 0.4s ease-in-out;
 }
+
 
 main {
     flex: 1;
@@ -55,10 +52,22 @@ header {
     background: #1c1c1c;
     padding: 15px 30px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 9999;
 }
+
+.header-container {
+    max-width: 1200px; /* Adjust as needed */
+    width: 100%;
+    margin: 0 auto; /* Center horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 
 .header-left {
     display: flex;
@@ -146,14 +155,7 @@ nav {
     display: flex;
     align-items: center;
     gap: 20px;
-    position: fixed; /* Ensures nav stays on top */
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #1c1c1c;
-    z-index: 10000; /* Higher than sidebar */
-    padding: 15px 30px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative; /* Allow it to be in flow inside header */
 }
 
 /* Ensure dropdowns are positioned correctly */
@@ -292,33 +294,37 @@ nav {
     }
 }
 
-/* HERO IMAGE FIX */
+/* ===== Consolidated Hero (Page-Hero) Section ===== */
 .page-hero {
     position: relative;
     width: 100%;
-    height: 300px;
+    height: 350px; /* Choose your desired height (350px is used here) */
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-  }
-  
-  .page-hero .hero-overlay {
+}
+
+.page-hero .hero-overlay {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-  }
-  
-  .page-hero .hero-text {
+}
+
+.page-hero .hero-text {
     position: relative;
     color: white;
-    font-size: 32px;
-    font-weight: bold;
-  }
-  
+    font-size: 2.2rem; /* Adjust if needed */
+    font-weight: 600;
+    text-align: center;
+    max-width: 90%;
+}
+
 /* HOME PAGE HERO at 50vh */
 .hero {
     position: relative;
@@ -348,17 +354,21 @@ nav {
     font-size:1.2rem;
     margin-bottom:1.5rem;
 }
+
+/* ===== Consolidated Hero Button ===== */
 .hero-button {
-    display:inline-block;
-    background-color:#ff6600;
-    color:#fff;
-    padding:10px 20px;
-    border-radius:4px;
-    font-weight:600;
-    text-decoration:none;
+    display: inline-block;
+    background-color: #ff6600;
+    color: #fff;
+    padding: 12px 24px;  /* Adjust the padding as desired */
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
 }
+
 .hero-button:hover {
-    background-color:#e05500;
+    background-color: #e05500;
 }
 
 /* HOME INTRO & FEATURED GRIDS */
@@ -375,10 +385,21 @@ nav {
     font-size:1rem;
     margin-bottom:1rem;
 }
-.featured-grid {
+.featured-card {
+    background: #2a2a2a;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -412,13 +433,17 @@ nav {
     box-shadow:0 8px 20px rgba(0,0,0,0.4);
 }
 .featured-card img {
-    display:block;
-    width:100%;
-    height:auto;
+    display: block;
+    width: 100%;
+    height: 200px;       /* Fixed height for consistency */
+    object-fit: cover;   /* Ensures the image fills the area without distortion */
 }
+
 .featured-content {
-    padding:1rem;
+    padding: 1rem;
+    flex: 1;             /* Allows this section to fill available space */
 }
+
 .featured-content h3 {
     margin-bottom:0.5rem;
     color:#fff;
@@ -510,25 +535,35 @@ nav {
 .cookie-banner button:hover {
     background:#e05500;
 }
-
 /* FOOTER */
 footer {
-    background:#1c1c1c;
-    color:#bbb;
-    text-align:center;
-    padding:15px 0;
-    flex-shrink:0;
+    background: #121212;  /* Matches your site's background */
+    color: #bbb;
+    text-align: center;
+    padding: 3px 0;  /* Reduced vertical padding for a narrower footer */
+    flex-shrink: 0;
 }
 footer a {
-    color:#ff6600;
+    text-decoration: none;
 }
 
-/* HEADINGS */
-h1,h2,h3,h4,h5 {
-    color:#fff;
-}
-
-
+/* SOCIAL LINKS STYLING (Footer) */
+.social-links {
+    text-align: center;
+    margin-top: 8px;
+  }
+  
+  .social-wrapper {
+    display: inline-block;  /* Shrinks to the width of its contents (the icons) */
+  }
+  
+  .social-icon {
+    font-size: 1.5em;         /* Slightly bigger icons */
+    color: #fff;              /* White icons */
+    margin: 0 10px;           /* Equal horizontal spacing */
+    text-decoration: none;
+  }
+  
 /* =========== MODAL FOR ABOUT GALLERY ========== */
 .modal {
     display:none;
@@ -770,33 +805,6 @@ body.post .main-content {
     }
 }
 
-
-/* Fullscreen Hero Image */
-.page-hero {
-    position: relative;
-    width: 100%;
-    height: 350px;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .page-hero .hero-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-  }
-  
-  .page-hero .hero-text h1 {
-    font-size: 2.2rem; /* Reduce the size */
-    text-align: center;
-    max-width: 90%;
-    font-weight: 600;
-}
-
 /* === Mobile UI Enhancements === */
 @media (max-width: 768px) {
     /* Allow the logo & search box to wrap */
@@ -825,33 +833,5 @@ body.post .main-content {
     }
   }
   
-  /* === Accent Hover Effects === */
-.hero-button {
-    background-color: #ff6600; /* brand orange */
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 4px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-  }
-  .hero-button:hover {
-    background-color: #e05500;
-  }
+
   
-  /* Adjust link hover for blog titles, etc. */
-  a:hover {
-    color: #ffa64d;
-  }
-  
-  /* Page fade-in on load (already set by AOS or similar), 
-   plus fade-out on navigation */
-body {
-    background-color: #121212; /* same as your main bg color */
-    transition: opacity 0.4s ease-in-out;
-  }
-  
-  /* When this class is added, the page fades out */
-  body.fade-out {
-    opacity: 0;
-  }

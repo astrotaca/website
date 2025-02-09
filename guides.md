@@ -1,5 +1,7 @@
 ---
 layout: default
+title: "Guides"
+permalink: /guides/
 ---
 
 <div class="page-content container" data-aos="fade-up">
@@ -15,36 +17,24 @@ layout: default
 
   <div class="content-container">
     <main class="main-content">
-      <p><small>Published on {{ page.date | date: '%B %d, %Y' }}</small></p>
-      <hr />
-      
-      <div class="post-content">
-        <!-- Fix broken images with JS -->
-        <script>
-          document.addEventListener("DOMContentLoaded", function () {
-            document.querySelectorAll(".post-content img").forEach(img => {
-              img.onerror = function () {
-                this.style.display = "none";  // Hide broken images
-              };
-            });
-          });
-        </script>
+      <h2>Guides Overview</h2>
+      <p>Explore our guides on astrophotography techniques and gear.</p>
 
-        {{ content }}
+      <div class="card-grid">
+        {% for post in site.posts %}
+          <a class="card" href="{{ post.url | relative_url }}">
+            {% if post.image %}
+              <img src="{{ post.image }}" alt="{{ post.title }}">
+            {% else %}
+              <img src="https://via.placeholder.com/600x400/222222/ffffff?text=Guide" alt="{{ post.title }}">
+            {% endif %}
+            <div class="card-content">
+              <h3>{{ post.title }}</h3>
+              <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+            </div>
+          </a>
+        {% endfor %}
       </div>
     </main>
-
-    <!-- Sidebar (Now only contains sidebar elements, no duplicate nav) -->
-    <aside class="right-sidebar">
-      <div class="sidebar-inner">
-        <h2>Navigation</h2>
-        <ul>
-          <li><a href="/about/">About</a></li>
-          <li><a href="/products/">Products</a></li>
-          <li><a href="/drivers/">Drivers/Software</a></li>
-          <li><a href="/guides/">Guides</a></li>
-        </ul>
-      </div>
-    </aside>
-
+  </div>
 </div>

@@ -4,103 +4,111 @@
   <meta charset="UTF-8">
   <title>{{ page.title }} | AstroTaca</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
   <meta name="description" content="{{ page.seo_description | default: 'AstroTaca - Astrophotography Gear & Guides' }}">
   <meta name="keywords" content="{{ page.seo_keywords | default: 'astrophotography, astro gear, telescopes, eaf, flat panel, astro brand' }}">
-
   <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
-
   <script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/js/all.min.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 </head>
 <body class="{{ page.layout }}">
 
+  <!-- Render header only if layout is not "post" -->
   {% if page.layout != "post" %}
   <header>
-    <div class="header-left">
-      <div class="logo">
-        <a href="/" style="color:#fff; font-size:24px; font-weight:bold; text-decoration:none;">AstroTaca</a>
+    <div class="header-container">
+      <div class="header-left">
+        <div class="logo">
+          <a href="/" style="color:#fff; font-size:24px; font-weight:bold; text-decoration:none;">AstroTaca</a>
+        </div>
+        <div class="search-box always-visible">
+          <i class="fas fa-search search-icon" onclick="toggleSearch()"></i>
+          <input type="text" id="search-input" placeholder="Search..." onkeyup="liveSearch()">
+          <ul id="search-results"></ul>
+        </div>
       </div>
-      <div class="search-box always-visible">
-        <i class="fas fa-search search-icon" onclick="toggleSearch()"></i>
-        <input type="text" id="search-input" placeholder="Search..." onkeyup="liveSearch()">
-        <ul id="search-results"></ul>
-      </div>
+      <nav id="nav-menu">
+        <a href="/about/">About</a>
+        <a href="/products/">Products</a>
+        <a href="/drivers/">Drivers/Software</a>
+        <a href="/guides/">Guides</a>
+        <div class="nav-dropdown">
+          <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            <input type="hidden" name="cmd" value="_cart">
+            <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL@domain.com">
+            <input type="hidden" name="display" value="1">
+            <button class="nav-dropbtn" style="border:none; background:none;">
+              <i class="fab fa-paypal"></i> View Cart
+            </button>
+          </form>
+        </div>
+      </nav>
     </div>
-    <nav id="nav-menu">
-      <a href="/about/">About</a>
-      <a href="/products/">Products</a>
-      <a href="/drivers/">Drivers/Software</a>
-      <a href="/guides/">Guides</a>
-      <div class="nav-dropdown">
-        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-          <input type="hidden" name="cmd" value="_cart">
-          <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL@domain.com">
-          <input type="hidden" name="display" value="1">
-          <button class="nav-dropbtn" style="border:none; background:none;">
-            <i class="fab fa-paypal"></i> View Cart
-          </button>
-        </form>
-      </div>
-    </nav>
   </header>
   {% endif %}
 
-  <div class="content-container">
-    <main class="main-content">
-      {{ content }}
-    </main>
-  </div>
-  
-  {% if page.layout == "post" %}
-  <aside class="right-sidebar">
-    <div class="sidebar-content">
-      <!-- Blurred Background & Overlay -->
-      <div class="sidebar-background" style="background-image: url('/assets/images/sidebar-background.jpg');"></div>
-      <div class="sidebar-overlay"></div>
-      
-      <!-- Centered Sidebar Content -->
-      <div class="sidebar-inner">
-        <div class="sidebar-nav">
-          <h2>Navigation</h2>
-          <ul>
-            <li><a href="/about/">About</a></li>
-            <li><a href="/products/">Products</a></li>
-            <li><a href="/drivers/">Drivers/Software</a></li>
-            <li><a href="/guides/">Guides</a></li>
-          </ul>
-        </div>
-        <div class="sidebar-info">
-          <h3>Description</h3>
-          <p>{{ page.description }}</p>
-          {% if page.layout == "post" and content contains "<h2>" %}
-          <h3>Table of Contents</h3>
-          <ul>
-            {% assign headings = content | split: '<h2>' %}
-            {% for section in headings offset: 1 %}
-              {% assign heading_title = section | split: '</h2>' | first %}
-              {% assign heading_id = heading_title | slugify %}
-              <li><a href="#{{ heading_id }}">{{ heading_title }}</a></li>
-            {% endfor %}
-          </ul>
-          {% endif %}
+  <!-- Wrap main content, sidebar, and footer in a site wrapper -->
+  <div class="site-wrapper">
+    <!-- Main Content -->
+    <div class="content-container">
+      <main class="main-content">
+        {{ content }}
+      </main>
+    </div>
+
+    <!-- Sidebar Navigation (only on posts) -->
+    {% if page.layout == "post" %}
+    <aside class="right-sidebar">
+      <div class="sidebar-content">
+        <!-- Blurred Background & Overlay -->
+        <div class="sidebar-background" style="background-image: url('/assets/images/sidebar-background.jpg');"></div>
+        <div class="sidebar-overlay"></div>
+        <!-- Centered Sidebar Content -->
+        <div class="sidebar-inner">
+          <div class="sidebar-nav">
+            <h2>Navigation</h2>
+            <ul>
+              <li><a href="/about/">About</a></li>
+              <li><a href="/products/">Products</a></li>
+              <li><a href="/drivers/">Drivers/Software</a></li>
+              <li><a href="/guides/">Guides</a></li>
+            </ul>
+          </div>
+          <div class="sidebar-info">
+            <h3>Description</h3>
+            <p>{{ page.description }}</p>
+            {% if content contains "<h2>" %}
+            <h3>Table of Contents</h3>
+            <ul>
+              {% assign headings = content | split: '<h2>' %}
+              {% for section in headings offset: 1 %}
+                {% assign heading_title = section | split: '</h2>' | first %}
+                {% assign heading_id = heading_title | slugify %}
+                <li><a href="#{{ heading_id }}">{{ heading_title }}</a></li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
         </div>
       </div>
-    </div>
-  </aside>
-  {% endif %}
+    </aside>
+    {% endif %}
 
-  <footer>
-    <p>&copy; {{ site.time | date: '%Y' }} AstroTaca</p>
-    <div class="social-links" style="margin-top:8px;">
-      <a href="https://github.com/astrotaca" target="_blank" style="color:#ff6600; margin-right:10px;">
-        <i class="fab fa-github"></i> GitHub
+<!-- Footer -->
+<div class="social-links" style="text-align: center; margin-top:8px;">
+  <div class="social-wrapper">
+    <div class="icon-wrapper">
+      <a href="https://github.com/astrotaca" target="_blank" class="social-icon github">
+        <i class="fab fa-github"></i>
       </a>
-      <a href="https://www.instagram.com/astrotaca/" target="_blank" style="color:#ff6600;">
-        <i class="fab fa-instagram"></i> Instagram
+      <a href="https://astrobin.com/yourastrobin" target="_blank" class="social-icon astrobin">
+        <i class="fa fa-camera-retro"></i>
+      </a>
+      <a href="https://www.instagram.com/astrotaca/" target="_blank" class="social-icon instagram">
+        <i class="fab fa-instagram"></i>
       </a>
     </div>
-  </footer>
+  </div>
+</div>
 
   <div class="cookie-banner" id="cookie-banner" style="display:none;">
     <p>We use cookies to improve your experience. By continuing, you accept the use of cookies.</p>
@@ -109,6 +117,8 @@
   
   <script src="{{ '/assets/main.js' | relative_url }}"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init({ duration:800, once:true });</script>
+  <script>
+    AOS.init({ duration:800, once:true });
+  </script>
 </body>
 </html>
