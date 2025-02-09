@@ -53,15 +53,17 @@
     {% if page.layout == "post" %}
     <aside class="right-sidebar">
       <div class="sidebar-content">
-        <img src="/assets/images/sidebar-background.jpg" alt="AstroTaca Sidebar" class="sidebar-image">
-        <div class="sidebar-nav">
-          <h2>Navigation</h2>
-          <ul>
-            <li><a href="/about/">About</a></li>
-            <li><a href="/products/">Products</a></li>
-            <li><a href="/drivers/">Drivers/Software</a></li>
-            <li><a href="/guides/">Guides</a></li>
-          </ul>
+        <div class="sidebar-background" style="background-image: url('/assets/images/sidebar-background.jpg');">
+          <div class="sidebar-overlay"></div>
+          <div class="sidebar-nav">
+            <h2>Navigation</h2>
+            <ul>
+              <li><a href="/about/">About</a></li>
+              <li><a href="/products/">Products</a></li>
+              <li><a href="/drivers/">Drivers/Software</a></li>
+              <li><a href="/guides/">Guides</a></li>
+            </ul>
+          </div>
         </div>
         <div class="sidebar-info">
           <h3>Description</h3>
