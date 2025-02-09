@@ -220,31 +220,33 @@ nav {
     }
 }
 
-/* PAGE HERO */
+/* HERO IMAGE FIX */
 .page-hero {
     position: relative;
-    height: 40vh;
+    width: 100%;
+    height: 300px;
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.page-hero .hero-overlay {
+    text-align: center;
+  }
+  
+  .page-hero .hero-overlay {
     position: absolute;
-    top:0;right:0;bottom:0;left:0;
-    background: rgba(0,0,0,0.5);
-}
-.page-hero .hero-text {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .page-hero .hero-text {
     position: relative;
-    z-index:1;
-    text-align:center;
-}
-.page-hero .hero-text h1 {
-    color:#fff;
-    font-size:2.5rem;
-}
-
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+  }
+  
 /* HOME PAGE HERO at 50vh */
 .hero {
     position: relative;
