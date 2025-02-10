@@ -91,25 +91,27 @@
       </main>
     </div>
 
-    <!-- Sidebar Navigation (only on posts) -->
+    <!-- Sidebar Wrapper (Includes overlay) -->
     {% if page.layout == "post" %}
-    <aside class="right-sidebar">
-      <div class="sidebar-content">
-        <div class="sidebar-background" style="background-image: url('/assets/images/sidebar-background.jpg');"></div>
-        <div class="sidebar-overlay"></div>
-        <div class="sidebar-inner">
-          <div class="sidebar-nav">
-            <h2>Navigation</h2>
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/guides/">Guides</a></li>
-              <li><a href="/products/">Products</a></li>
-              <li><a href="/drivers/">Drivers/Software</a></li>
-            </ul>
+    <div class="sidebar-wrapper">
+      <div class="sidebar-overlay" onclick="closeSidebar()"></div> <!-- Overlay to close sidebar -->
+      <aside class="right-sidebar">
+        <div class="sidebar-content">
+          <div class="sidebar-background" style="background-image: url('/assets/images/sidebar-background.jpg');"></div>
+          <div class="sidebar-inner">
+            <div class="sidebar-nav">
+              <h2>Navigation</h2>
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/guides/">Guides</a></li>
+                <li><a href="/products/">Products</a></li>
+                <li><a href="/drivers/">Drivers/Software</a></li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </aside>
+      </aside>
+    </div>
     {% endif %}
 
     <!-- Footer -->
@@ -120,7 +122,7 @@
           <a href="https://github.com/astrotaca" target="_blank" class="social-icon github">
             <i class="fab fa-github"></i>
           </a>
-          <a href="https://astrobin.com/users/Astrotaca" target="_blank" class="social-icon astrobin">
+          <a href="https://astrobin.com/users/Astrotaca/" target="_blank" class="social-icon astrobin">
             <i class="fa fa-camera-retro"></i>
           </a>
           <a href="https://www.instagram.com/astrotaca/" target="_blank" class="social-icon instagram">
@@ -144,6 +146,17 @@
     /* Toggle mobile menu */
     function toggleMenu() {
       document.getElementById("nav-menu").classList.toggle("open");
+    }
+
+    /* Sidebar Open & Close */
+    function openSidebar() {
+        document.querySelector(".sidebar-wrapper").classList.add("active");
+        document.querySelector(".sidebar-overlay").classList.add("active");
+    }
+
+    function closeSidebar() {
+        document.querySelector(".sidebar-wrapper").classList.remove("active");
+        document.querySelector(".sidebar-overlay").classList.remove("active");
     }
   </script>
 </body>

@@ -138,6 +138,39 @@ header {
     outline: none;
 }
 
+/* Sidebar Wrapper */
+.sidebar-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99;
+    display: none; /* Hidden by default */
+}
+
+/* Full-screen overlay behind sidebar */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent dark overlay */
+    z-index: 98;
+    display: none; /* Hidden initially */
+}
+
+/* Show overlay and sidebar when active */
+.sidebar-wrapper.active {
+    display: block;
+}
+
+.sidebar-overlay.active {
+    display: block;
+}
+
+
 /* Make text inside search input smaller on very small screens */
 @media (max-width: 600px) {
     #search-input {
