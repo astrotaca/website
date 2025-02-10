@@ -13,17 +13,16 @@
   <style>
     /* Social Icons Hover Effect */
     .social-icon {
-      display: inline-block;  /* Ensure transforms and shadows work correctly */
-      color: #fff;            /* Force icons to white */
+      display: inline-block;
+      color: #fff;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .social-icon:hover {
-      transform: scale(1.1);              /* Increased zoom effect for smaller icons */
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Subtle shadow effect */
-      color: #fff;                        /* Keep icons white on hover */
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     }
 
-    /* Sticky Footer: Ensure footer is at the bottom when content is short */
+    /* Sticky Footer */
     .site-wrapper {
       display: flex;
       flex-direction: column;
@@ -40,6 +39,7 @@
   {% if page.layout != "post" %}
   <header>
     <div class="header-container">
+      <!-- Left Side: AstroTaca & Search -->
       <div class="header-left">
         <div class="logo">
           <a href="/" style="color:#fff; font-size:24px; font-weight:bold; text-decoration:none;">AstroTaca</a>
@@ -50,22 +50,34 @@
           <ul id="search-results"></ul>
         </div>
       </div>
-      <nav id="nav-menu">
-        <a href="/about/">About</a>
-        <a href="/products/">Products</a>
-        <a href="/drivers/">Drivers/Software</a>
-        <a href="/guides/">Guides</a>
-        <div class="nav-dropdown">
-          <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-            <input type="hidden" name="cmd" value="_cart">
-            <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL@domain.com">
-            <input type="hidden" name="display" value="1">
-            <button class="nav-dropbtn" style="border:none; background:none;">
-              <i class="fab fa-paypal"></i> View Cart
-            </button>
-          </form>
-        </div>
-      </nav>
+
+      <!-- Right Side: Navigation & Hamburger -->
+      <div class="header-right">
+        <nav id="nav-menu">
+          <a href="/">Home</a>
+          <a href="/guides/">Guides</a>
+          <a href="/products/">Products</a>
+          <a href="/drivers/">Drivers/Software</a>
+          <div class="about-cart-group">
+            <a href="/about/">About</a>
+            <div class="nav-dropdown">
+              <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                <input type="hidden" name="cmd" value="_cart">
+                <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL@domain.com">
+                <input type="hidden" name="display" value="1">
+                <button class="nav-dropbtn" style="border:none; background:none;">
+                  <i class="fas fa-shopping-cart fa-lg"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Hamburger Menu Icon -->
+        <button class="menu-icon" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
     </div>
   </header>
   {% endif %}
@@ -83,10 +95,8 @@
     {% if page.layout == "post" %}
     <aside class="right-sidebar">
       <div class="sidebar-content">
-        <!-- Blurred Background & Overlay -->
         <div class="sidebar-background" style="background-image: url('/assets/images/sidebar-background.jpg');"></div>
         <div class="sidebar-overlay"></div>
-        <!-- Centered Sidebar Content -->
         <div class="sidebar-inner">
           <div class="sidebar-nav">
             <h2>Navigation</h2>
@@ -97,7 +107,6 @@
               <li><a href="/drivers/">Drivers/Software</a></li>
             </ul>
           </div>
-          <!-- (Optional: Remove any extra sidebar-info blocks if not needed) -->
         </div>
       </div>
     </aside>
@@ -108,22 +117,15 @@
       <p>&copy; {{ site.time | date: '%Y' }} AstroTaca</p>
       <div class="social-links" style="text-align: center; margin-top:8px;">
         <div class="social-wrapper">
-          <div class="icon-wrapper">
-            <a href="https://github.com/astrotaca" target="_blank" class="social-icon github">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="https://astrobin.com/users/Astrotaca" target="_blank" class="social-icon astrobin">
-              <i class="fa fa-camera-retro"></i>
-            </a>
-            <a href="https://www.instagram.com/astrotaca/" target="_blank" class="social-icon instagram">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </div>
-          <div class="social-line-wrapper">
-            <div class="social-line github-seg"></div>
-            <div class="social-line astrobin-seg"></div>
-            <div class="social-line instagram-seg"></div>
-          </div>
+          <a href="https://github.com/astrotaca" target="_blank" class="social-icon github">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://astrobin.com/users/Astrotaca" target="_blank" class="social-icon astrobin">
+            <i class="fa fa-camera-retro"></i>
+          </a>
+          <a href="https://www.instagram.com/astrotaca/" target="_blank" class="social-icon instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
         </div>
       </div>
     </footer>
@@ -138,6 +140,11 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({ duration:800, once:true });
+
+    /* Toggle mobile menu */
+    function toggleMenu() {
+      document.getElementById("nav-menu").classList.toggle("open");
+    }
   </script>
 </body>
 </html>

@@ -34,13 +34,14 @@ hero_image: "/assets/images/hero.jpg"
 
     <!-- Featured Card 1: PixInsight Noise Reduction -->
     <a class="featured-card" href="{{ '/blog/noise-reduction/' | relative_url }}">
-      <img src="https://via.placeholder.com/600x400/2f2f2f/ffffff?text=PixInsight+Noise+Reduction" alt="PixInsight Noise Reduction"/>
+      <!-- Verify that 'pixinsight-noise-reduction.jpg' exists in '/assets/images/' -->
+      <img src="{{ '/assets/images/pixinsight-noise-reduction.jpg' | relative_url }}" alt="PixInsight Noise Reduction"/>
       <div class="featured-content">
         <h3>PixInsight Noise Reduction</h3>
         <p>Optimize your astrophotography images with advanced noise reduction techniques.</p>
       </div>
     </a>
-    
+
     <!-- Featured Card 2: Comparison of Stacking Algorithms -->
     <a class="featured-card" href="{{ '/blog/stacking-algorithms/' | relative_url }}">
       <img src="{{ '/assets/images/stacking-algorithms.jpg' | relative_url }}" alt="Comparison of Stacking Algorithms"/>
@@ -49,7 +50,7 @@ hero_image: "/assets/images/hero.jpg"
         <p>Discover the best stacking techniques for enhancing your astrophotography workflow.</p>
       </div>
     </a>
-    
+
     <!-- Featured Card 3: Beginner Astro Tips -->
     <a class="featured-card" href="{{ '/blog/beginners-astro-tips/' | relative_url }}">
       <img src="{{ '/assets/images/beginners-astro-tips.jpg' | relative_url }}" alt="Beginner Astro Tips"/>
@@ -58,9 +59,10 @@ hero_image: "/assets/images/hero.jpg"
         <p>Essential guidance for new astrophotographers.</p>
       </div>
     </a>
-    
-  </div>
-</section>
+
+  </div>  <!-- End .featured-grid for Featured Articles -->
+</section>  <!-- End Featured Articles section -->
+
 
 <!-- Featured Products -->
 <section class="home-intro" data-aos="fade-up">
