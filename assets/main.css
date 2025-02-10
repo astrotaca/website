@@ -56,7 +56,9 @@ header {
     top: 0;
     left: 0;
     width: 100%;
+    height: 60px; /* Ensures consistent height */
 }
+
 .header-container {
     width: 100%;
     display: flex;
@@ -66,18 +68,13 @@ header {
     box-sizing: border-box; /* Ensures padding does not affect width */
 }
 
-.header-left {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-
+.header-left,
 .header-right {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
+    height: 60px; /* Match header height */
 }
-
 
 /* Logo */
 .logo a {
@@ -101,7 +98,15 @@ header {
     padding: 5px 10px;
     display: flex;
     align-items: center;
-    max-width: 250px; 
+    max-width: 250px;
+    height: 40px; /* Matches input height */
+}
+
+/* Make search bar smaller when screen is very narrow */
+@media (max-width: 600px) {
+    .search-box {
+        max-width: 120px;
+    }
 }
 
 /* Adjust search bar width for smaller screens */
@@ -356,7 +361,12 @@ nav {
     color: #fff;
     cursor: pointer;
     display: none;
+    height: 40px; /* Forces consistent height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 @media (max-width: 768px) {
     .menu-icon {
         display: block;
