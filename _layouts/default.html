@@ -9,6 +9,30 @@
   <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
   <script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/js/all.min.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+  <style>
+    /* Social Icons Hover Effect */
+    .social-icon {
+      display: inline-block;  /* Ensure transforms and shadows work correctly */
+      color: #fff;            /* Force icons to white */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .social-icon:hover {
+      transform: scale(1.1);              /* Increased zoom effect for smaller icons */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Subtle shadow effect */
+      color: #fff;                        /* Keep icons white on hover */
+    }
+
+    /* Sticky Footer: Ensure footer is at the bottom when content is short */
+    .site-wrapper {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .content-container {
+      flex: 1;
+    }
+  </style>
 </head>
 <body class="{{ page.layout }}">
 
@@ -88,7 +112,7 @@
             <a href="https://github.com/astrotaca" target="_blank" class="social-icon github">
               <i class="fab fa-github"></i>
             </a>
-            <a href="https://astrobin.com/user/Astrotaca" target="_blank" class="social-icon astrobin">
+            <a href="https://astrobin.com/users/Astrotaca" target="_blank" class="social-icon astrobin">
               <i class="fa fa-camera-retro"></i>
             </a>
             <a href="https://www.instagram.com/astrotaca/" target="_blank" class="social-icon instagram">

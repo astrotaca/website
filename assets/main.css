@@ -52,6 +52,7 @@ header {
     padding: 15px 30px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     position: fixed;
+    z-index: 200;
     top: 0;
     left: 0;
     width: 100%;
@@ -637,9 +638,12 @@ body.post .content-container {
     gap: 40px; /* Spacing between sidebar & content */
 }
 
-
-
-
+body.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  
 /* Expand the main content for guides */
 body.post .main-content {
     max-width: 900px;
@@ -651,23 +655,33 @@ body.post .main-content {
     margin-left: 0; /* Aligns properly with the sidebar */
 }
 
-/* ---------- Right Sidebar Adjustments ---------- */
+/* ---------- Right Sidebar Adjustments (Original) ---------- */
 .right-sidebar {
     position: fixed;
     top: 0;
     left: 0;
     width: 25vw;
     min-width: 280px;
-    max-width: 100%; /* Prevents it from exceeding viewport width */
+    max-width: 100%;
     height: 100vh;
     overflow-y: auto;
-    overflow-x: hidden; /* Prevents horizontal scrolling */
+    overflow-x: hidden;
     z-index: 100;
     background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
+    /* Initial state: slightly offset and invisible */
+    transform: translateX(-20%);
+    opacity: 0;
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
 }
+
+.right-sidebar.slide-in {
+    transform: translateX(0);
+    opacity: 1;
+}
+
 
 /* Sidebar Content */
 .right-sidebar .sidebar-content {
@@ -701,12 +715,14 @@ body.post .main-content {
     z-index: -1; /* Moves it behind content */
 }
 
-/* Centered Sidebar Inner Content */
 .right-sidebar .sidebar-inner {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Center it perfectly */
+    /* Remove any extra vertical translation—only center the text */
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.8s ease-out;
     z-index: 10;
     color: #fff;
     text-align: center;
@@ -718,6 +734,11 @@ body.post .main-content {
     pointer-events: auto;
     width: 100%;
 }
+
+.right-sidebar.slide-in .sidebar-inner {
+    opacity: 1;
+}
+
 
 /* Sidebar Navigation Links */
 .right-sidebar .sidebar-nav ul {
@@ -731,28 +752,18 @@ body.post .main-content {
 }
 
 .right-sidebar .sidebar-nav ul li a {
+    display: inline-block; /* Ensure the element can be transformed */
     color: #ff6600;
     text-decoration: none;
-    transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     font-size: 18px;  /* Adjust text size for better readability */
+    transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Hover Effects for Sidebar Links */
 .right-sidebar .sidebar-nav ul li a:hover {
     color: #ffa64d;
-    transform: scale(1.03); /* Slight zoom effect */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Shadow effect */
-    transition: all 0.3s ease;
-}
-
-/* Apply Zoom Hover Effect to Sidebar Navigation Links */
-.sidebar-nav ul li a {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.sidebar-nav ul li a:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    transform: scale(1.03);             /* Slight zoom effect */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);  /* Shadow effect */
 }
 
 /* ---------- Main Content Adjustments for Post Pages ---------- */
@@ -772,7 +783,7 @@ body.post .main-content {
 
 @media (max-width: 1024px) {
     body.post .content-container {
-        flex-direction: column; /* Stack content & sidebar vertically */
+        flex-direction: column;
         align-items: center;
     }
 
@@ -782,10 +793,13 @@ body.post .main-content {
     }
 
     .right-sidebar {
-        position: relative;
-        width: 100%;
+        position: fixed; /* Keep it fixed so the animation works */
+        top: 0;
+        left: 0;
+        width: 25vw;   /* Same as desktop value */
+        min-width: 280px;
         text-align: center;
-        padding: 20px 0;
+        padding: 0;    /* Remove extra padding */
     }
 }
 
@@ -796,11 +810,15 @@ body.post .main-content {
     }
 
     .right-sidebar {
-        width: 100%;
-        padding: 10px;
-        position: relative;
+        position: fixed; /* Keep it fixed for the slide effect */
+        top: 0;
+        left: 0;
+        width: 25vw;   /* Maintain the same width as desktop (or adjust as needed) */
+        min-width: 280px;
+        padding: 0;    /* Remove extra padding */
     }
 }
+
 
 /* === Mobile UI Enhancements === */
 @media (max-width: 768px) {
