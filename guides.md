@@ -31,7 +31,6 @@ hero_image: "/assets/images/hero-guides.jpg"  # Replace with your desired hero i
     <!-- Featured Guides Grid -->
     <div class="card-grid">
       {%- for post in site.posts -%}
-        <!-- Begin Featured Guide Card -->
         <a class="card" href="{{ post.url | relative_url }}">
           {%- if post.image -%}
             <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
@@ -43,7 +42,6 @@ hero_image: "/assets/images/hero-guides.jpg"  # Replace with your desired hero i
             <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
           </div>
         </a>
-        <!-- End Featured Guide Card -->
       {%- endfor -%}
     </div>
   </main>

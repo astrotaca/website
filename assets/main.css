@@ -55,8 +55,8 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 9999;
 }
+
 
 .header-container {
     max-width: 1200px; /* Adjust as needed */
@@ -89,8 +89,9 @@ header {
     padding: 5px 10px;
     display: flex;
     align-items: center;
-    max-width: 250px; /* Prevents it from stretching too far */
+    max-width: 250px; 
 }
+
 
 /* mobile fix */
 @media (max-width: 768px) {
@@ -196,13 +197,9 @@ nav {
     background: #1c1c1c;
     min-width: 200px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    border-radius: 5px;
     padding: 10px 0;
-    z-index: 9999;
-    overflow: hidden;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .nav-dropdown-content a {
@@ -359,11 +356,10 @@ nav {
     display: inline-block;
     background-color: #ff6600;
     color: #fff;
-    padding: 12px 24px;  /* Adjust the padding as desired */
+    padding: 12px 24px;
     border-radius: 4px;
     font-weight: 600;
     text-decoration: none;
-    transition: background-color 0.3s ease;
 }
 
 .hero-button:hover {
@@ -384,7 +380,7 @@ nav {
     font-size:1rem;
     margin-bottom:1rem;
 }
-.featured-card {
+.featured-card, .card {
     background: #2a2a2a;
     border-radius: 8px;
     overflow: hidden;
@@ -392,8 +388,6 @@ nav {
     color: #fff;
     transition: transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
 }
 
 .featured-grid {
@@ -411,6 +405,7 @@ nav {
         flex-direction: column;
         align-items: center;
     }
+    
     
     .featured-card {
         width: 100%;
@@ -656,7 +651,7 @@ body.post .main-content {
     margin-left: 0; /* Aligns properly with the sidebar */
 }
 
-/* ---------- Updated Right Sidebar Adjustments ---------- */
+/* ---------- Right Sidebar Adjustments ---------- */
 .right-sidebar {
     position: fixed;
     top: 0;
@@ -674,6 +669,7 @@ body.post .main-content {
     justify-content: center;
 }
 
+/* Sidebar Content */
 .right-sidebar .sidebar-content {
     position: relative;
     width: 100%;
@@ -720,50 +716,44 @@ body.post .main-content {
     align-items: center;
     justify-content: center;
     pointer-events: auto;
-    width: 100%; /* Ensures it aligns properly */
+    width: 100%;
 }
 
-
-/* Ensure inner content elements respect the sidebar boundaries */
-.right-sidebar .sidebar-inner * {
-    box-sizing: border-box;
-}
-
-.right-sidebar .sidebar-nav h2,
-.right-sidebar .sidebar-info h3 {
-    margin-top: 0;
-}
-
-.right-sidebar ul {
+/* Sidebar Navigation Links */
+.right-sidebar .sidebar-nav ul {
     list-style: none;
     padding: 0;
     margin: 10px 0;
 }
 
-.right-sidebar ul li {
+.right-sidebar .sidebar-nav ul li {
     margin: 10px 0;
 }
 
-.right-sidebar ul li a {
+.right-sidebar .sidebar-nav ul li a {
     color: #ff6600;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 18px;  /* Adjust text size for better readability */
 }
 
-.right-sidebar ul li a:hover {
+/* Hover Effects for Sidebar Links */
+.right-sidebar .sidebar-nav ul li a:hover {
     color: #ffa64d;
+    transform: scale(1.03); /* Slight zoom effect */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Shadow effect */
+    transition: all 0.3s ease;
 }
 
-/* Apply zoom hover effect to the sidebar navigation links */
+/* Apply Zoom Hover Effect to Sidebar Navigation Links */
 .sidebar-nav ul li a {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .sidebar-nav ul li a:hover {
+}
+
+.sidebar-nav ul li a:hover {
     transform: scale(1.03);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-  }
-  
+}
 
 /* ---------- Main Content Adjustments for Post Pages ---------- */
 /* Adjust Main Content for Post Pages */
