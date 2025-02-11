@@ -8,14 +8,14 @@ seo_keywords: "auto focuser, eaf, telescope focusing, astrophotography gear"
 ---
 
 <h2>AstroTaca Electronic Auto Focuser (EAF)</h2>
-<p>Price: $350.00</p>
+<p>Price: $150.00</p>
 <p>Automated focusing for crisp, clear stars. Integrates with popular astro software.</p>
 
 <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
   <input type="hidden" name="cmd" value="_cart">
   <input type="hidden" name="business" value="tacavonius@gmail.com">
   <input type="hidden" name="item_name" value="AstroTaca Electronic Auto Focuser">
-  <input type="hidden" name="amount" value="350.00">
+  <input type="hidden" name="amount" value="150.00">
   <input type="hidden" name="currency_code" value="USD">
   <input type="hidden" name="add" value="1">
   <input type="hidden" name="shipping" value="15.00">
