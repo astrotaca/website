@@ -19,7 +19,7 @@ seo_keywords: "about astro, contact, astro gear"
 <h3>Contact Us</h3>
 <p>
   For inquiries or support, email 
-  <a href="mailto:info@astrotaca.com">info@astrotaca.com</a>.
+  <a href="mailto:astrotaca@gmail.com">astrotaca@gmail.com</a>.
 </p>
 
 <hr>
