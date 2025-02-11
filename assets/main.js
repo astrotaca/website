@@ -1,13 +1,8 @@
 // === MOBILE MENU TOGGLE ===
-function toggleMenu(){
+function toggleMenu() {
   const nav = document.getElementById("nav-menu");
-  const icon = document.querySelector(".menu-icon i");
-  if (nav.classList.contains("open")) {
-    nav.classList.remove("open");
-    icon.classList.remove("active");
-  } else {
-    nav.classList.add("open");
-    icon.classList.add("active");
+  if (nav) {
+    nav.classList.toggle("open");
   }
 }
 
@@ -41,11 +36,14 @@ const searchItems = [
   { name: "ascom", link: "/drivers/" }
 ];
 
-function toggleSearch(){
-  document.getElementById("search-input").focus();
+function toggleSearch() {
+  const searchInput = document.getElementById("search-input");
+  if (searchInput) {
+    searchInput.focus();
+  }
 }
 
-function liveSearch(){
+function liveSearch() {
   let input = document.getElementById("search-input").value.toLowerCase();
   let results = document.getElementById("search-results");
   results.innerHTML = "";
@@ -66,39 +64,59 @@ function liveSearch(){
   }
 }
 
+// Close search results when clicking outside the search box
 document.addEventListener("click", function(e) {
   let box = document.querySelector(".search-box");
   let list = document.getElementById("search-results");
-  if (!box.contains(e.target)) {
+  if (box && !box.contains(e.target)) {
     list.classList.remove('show');
   }
 });
 
+// === SIDEBAR OPEN/CLOSE (for mobile) ===
+function openSidebar() {
+  const sidebarWrapper = document.querySelector(".sidebar-wrapper");
+  const sidebarOverlay = document.querySelector(".sidebar-overlay");
+  if (sidebarWrapper && sidebarOverlay) {
+    sidebarWrapper.classList.add("active");
+    sidebarOverlay.classList.add("active");
+  }
+}
+
+function closeSidebar() {
+  const sidebarWrapper = document.querySelector(".sidebar-wrapper");
+  const sidebarOverlay = document.querySelector(".sidebar-overlay");
+  if (sidebarWrapper && sidebarOverlay) {
+    sidebarWrapper.classList.remove("active");
+    sidebarOverlay.classList.remove("active");
+  }
+}
+
 // === COOKIE BANNER FUNCTIONS ===
-function setCookie(name, value, days){
+function setCookie(name, value, days) {
   const d = new Date();
   d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
   let expires = "expires=" + d.toUTCString();
   document.cookie = name + "=" + value + ";" + expires + ";path=/";
 }
 
-function getCookie(name){
+function getCookie(name) {
   let cname = name + "=";
   let decoded = decodeURIComponent(document.cookie);
   let ca = decoded.split(';');
-  for (let i = 0; i < ca.length; i++){
+  for (let i = 0; i < ca.length; i++) {
     let c = ca[i].trim();
-    if (c.indexOf(cname) === 0){
+    if (c.indexOf(cname) === 0) {
       return c.substring(cname.length, c.length);
     }
   }
   return "";
 }
 
-function showCookieBanner(){
+function showCookieBanner() {
   let banner = document.getElementById("cookie-banner");
   if (!banner) return;
-  if (!getCookie("cookieConsent")){
+  if (!getCookie("cookieConsent")) {
     banner.style.display = "flex";
   }
 }
@@ -108,27 +126,21 @@ document.addEventListener("DOMContentLoaded", function() {
   // Remove any lingering fade-out class from the body (if present)
   document.body.classList.remove("fade-out");
 
+  // Ensure the sidebar wrapper is visible on post pages
+  const sidebarWrapper = document.querySelector('.sidebar-wrapper');
+  if (sidebarWrapper) {
+    sidebarWrapper.classList.add('active'); // This sets display: block per your CSS
+  }
+
   // Trigger the sidebar slide‑in animation on page load
   const sidebar = document.querySelector('.right-sidebar');
   if (sidebar) {
+    // Force a reflow to ensure the transition will occur
+    void sidebar.offsetWidth;
     setTimeout(() => {
       sidebar.classList.add('slide-in');
     }, 50); // Adjust delay as needed
   }
-
-  // Listen for the pageshow event (which fires when a page is loaded from cache)
-window.addEventListener("pageshow", function(event) {
-  // When event.persisted is true, the page was loaded from bfcache.
-  const sidebar = document.querySelector('.right-sidebar');
-  if (sidebar) {
-    // Remove any lingering slide-in state and then re-add it after a short delay.
-    sidebar.classList.remove('slide-in');
-    setTimeout(() => {
-      sidebar.classList.add('slide-in');
-    }, 50); // Adjust the delay as needed
-  }
-});
-
 
   // Set up internal link navigation (without applying a global fade-out)
   let cancelNavigation = false; // Flag to cancel pending navigation if needed
@@ -146,7 +158,6 @@ window.addEventListener("pageshow", function(event) {
 
         // Use the transitionend event so that navigation waits for the sidebar to finish animating out.
         const transitionHandler = function(event) {
-          // (Optionally, check event.propertyName if you want to wait for a specific property)
           sidebar.removeEventListener('transitionend', transitionHandler);
           if (!cancelNavigation) {
             window.location.href = href;
@@ -168,12 +179,31 @@ window.addEventListener("pageshow", function(event) {
   showCookieBanner();
   const acceptBtn = document.getElementById("cookie-accept-btn");
   if (acceptBtn) {
-    acceptBtn.addEventListener("click", function(){
+    acceptBtn.addEventListener("click", function() {
       setCookie("cookieConsent", "true", 365);
       const banner = document.getElementById("cookie-banner");
       if (banner) {
         banner.style.display = "none";
       }
     });
+  }
+});
+
+// === PAGESHOW EVENT (for bfcache) ===
+window.addEventListener("pageshow", function(event) {
+  // Ensure the sidebar wrapper is visible when the page is loaded from cache
+  const sidebarWrapper = document.querySelector('.sidebar-wrapper');
+  if (sidebarWrapper) {
+    sidebarWrapper.classList.add('active');
+  }
+  
+  const sidebar = document.querySelector('.right-sidebar');
+  if (sidebar) {
+    // Remove any lingering slide‑in state, force reflow, then re-add the class
+    sidebar.classList.remove('slide-in');
+    void sidebar.offsetWidth;
+    setTimeout(() => {
+      sidebar.classList.add('slide-in');
+    }, 50); // Adjust delay as needed
   }
 });

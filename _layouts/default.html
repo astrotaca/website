@@ -31,6 +31,33 @@
     .content-container {
       flex: 1;
     }
+
+    /* Set the cart (meteor) icon to white and add hover effects */
+    header .about-cart-group .cart-icon {
+      font-size: 28px;
+      color: #fff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    header .about-cart-group .cart-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    /* Ensure the button containing the cart icon appears clickable */
+    .nav-dropbtn {
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    /* Ensure About and Cart remain on the same row in mobile view */
+    @media (max-width: 950px) {
+      .about-cart-group {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
   </style>
 </head>
 <body class="{{ page.layout }}">
@@ -58,15 +85,17 @@
           <a href="/guides/">Guides</a>
           <a href="/products/">Products</a>
           <a href="/drivers/">Drivers/Software</a>
-          <div class="about-cart-group">
+          <!-- Increased gap from 10px to 15px -->
+          <div class="about-cart-group" style="display: flex; align-items: center; gap: 15px;">
             <a href="/about/">About</a>
             <div class="nav-dropdown">
               <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
                 <input type="hidden" name="cmd" value="_cart">
                 <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL@domain.com">
                 <input type="hidden" name="display" value="1">
-                <button class="nav-dropbtn" style="border:none; background:none;">
-                  <i class="fas fa-shopping-cart fa-lg"></i>
+                <button class="nav-dropbtn">
+                  <!-- Changed cart icon to use "fa-meteor" with dedicated class "cart-icon" -->
+                  <i class="fas fa-meteor fa-lg cart-icon"></i>
                 </button>
               </form>
             </div>
@@ -94,7 +123,7 @@
     <!-- Sidebar Wrapper (Includes overlay) -->
     {% if page.layout == "post" %}
     <div class="sidebar-wrapper">
-      <div class="sidebar-overlay" onclick="closeSidebar()"></div> <!-- Overlay to close sidebar -->
+      <div class="sidebar-overlay" onclick="closeSidebar()"></div>
       <aside class="right-sidebar">
         <div class="sidebar-content">
           <div class="sidebar-background" style="background-image: url('/assets/images/sidebar-background.jpg');"></div>
@@ -150,13 +179,13 @@
 
     /* Sidebar Open & Close */
     function openSidebar() {
-        document.querySelector(".sidebar-wrapper").classList.add("active");
-        document.querySelector(".sidebar-overlay").classList.add("active");
+      document.querySelector(".sidebar-wrapper").classList.add("active");
+      document.querySelector(".sidebar-overlay").classList.add("active");
     }
 
     function closeSidebar() {
-        document.querySelector(".sidebar-wrapper").classList.remove("active");
-        document.querySelector(".sidebar-overlay").classList.remove("active");
+      document.querySelector(".sidebar-wrapper").classList.remove("active");
+      document.querySelector(".sidebar-overlay").classList.remove("active");
     }
   </script>
 </body>

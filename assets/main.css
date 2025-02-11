@@ -49,14 +49,15 @@ header {
     align-items: center;
     justify-content: space-between;
     background: #1c1c1c;
-    padding: 0 30px; /* Remove top/bottom padding */
+    padding: 0 30px; /* 30px on left/right */
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     position: fixed;
     z-index: 200;
     top: 0;
     left: 0;
     width: 100%;
-    height: 60px; /* Lock height */
+    height: 60px; /* Fixed header height */
+    font-size: 16px;  /* Fixed font size to prevent scaling from affecting header items */
 }
 
 .header-container {
@@ -64,16 +65,26 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 30px; /* Exactly 30px padding on both sides */
-    box-sizing: border-box; /* Ensures padding does not affect width */
+    padding: 0 30px;
+    box-sizing: border-box;
 }
 
-.header-left,
+/* Header Left: contains the logo and search box */
+.header-left {
+    display: flex;
+    align-items: center;   /* Vertically center the logo and search box */
+    gap: 20px;             /* Fixed gap between logo and search box */
+    height: 60px;
+    flex-shrink: 0;
+    width: 350px;          /* Fixed width; adjust as needed */
+}
+
+/* Header Right remains as before */
 .header-right {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 60px; /* Match header height */
+    height: 60px;
 }
 
 /* Logo */
@@ -82,15 +93,16 @@ header {
     font-weight: bold;
     color: #ffffff;
     margin-right: 20px;
+    white-space: nowrap; /* Prevent logo text from wrapping */
 }
 
-.about-cart-group {
-    display: flex;
-    align-items: center;
-    gap: 5px; /* Adjust this value as needed for closer or wider spacing */
-  }  
+/* Cart Icon – now white */
+.about-cart-group .cart-icon {
+    font-size: 28px;
+    color: #fff;  /* Set to white */
+}
 
-/* Search Box */
+/* Search Box – fixed dimensions */
 .search-box {
     position: relative;
     background: rgba(255,255,255,0.1);
@@ -98,36 +110,20 @@ header {
     padding: 5px 10px;
     display: flex;
     align-items: center;
-    max-width: 250px;
-    height: 40px; /* Matches input height */
+    width: 200px;  /* Fixed width */
+    height: 35px;  /* Fixed height */
+    flex-shrink: 0;
 }
 
-/* Make search bar smaller when screen is very narrow */
-@media (max-width: 600px) {
-    .search-box {
-        max-width: 120px;
-    }
-}
-
-/* Adjust search bar width for smaller screens */
-@media (max-width: 900px) {
-    .search-box {
-        max-width: 180px; /* Shrink slightly */
-    }
-}
-
-@media (max-width: 768px) {
-    .search-box {
-        max-width: 120px;
-        height: 36px; /* Ensures smaller height */
-    }
-}
-
-
-@media (max-width: 600px) {
-    .search-box {
-        max-width: 100px; /* Shrink to a minimum size */
-    }
+/* Search Box Input – vertical centering */
+.search-box input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 16px;
+    line-height: 35px;  /* Matches the search box's height */
+    outline: none;
 }
 
 .search-icon {
@@ -227,6 +223,36 @@ nav {
     padding-right: 40px;
 }
 
+/* Hamburger Icon Consolidated Rules */
+.menu-icon {
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    display: none;              /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Show the hamburger icon on screens 950px wide or less */
+@media (max-width: 950px) {
+    .menu-icon {
+        display: flex;
+    }
+}
+
+/* On screens wider than 950px, ensure full nav is visible and the hamburger stays hidden */
+@media (min-width: 951px) {
+    nav {
+        display: flex !important;
+    }
+    .menu-icon {
+        display: none !important;
+    }
+}
+
+
 /* Hide full nav & show menu icon if there isn't enough space */
 @media (max-width: 950px) { /* Adjust width if needed */
     nav {
@@ -244,13 +270,6 @@ nav {
     nav.open {
         display: flex;
     }
-
-    /* Show the hamburger menu when needed */
-    .menu-icon {
-        display: block;
-    }
-}
-
 
 /* Ensure dropdowns are positioned correctly */
 .nav-dropdown {
@@ -316,33 +335,6 @@ nav {
     visibility: visible;
 }
 
-/* Mobile Dropdown Fix */
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .menu-icon {
-        font-size: 24px;
-        color: #fff;
-        cursor: pointer;
-        display: none;
-        height: 60px; /* Matches header height */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 10px; /* Avoids affecting height */
-    }
-    
-    /* Show the hamburger menu when screen is too small */
-    @media (max-width: 950px) {
-        .menu-icon {
-            display: block;
-        }
-    }
-    
-    
     nav.open {
         display: flex;
         flex-direction: column;
@@ -356,49 +348,6 @@ nav {
     
     .nav-dropdown:hover .nav-dropdown-content {
         display: block;
-    }
-}
-
-
-/* Hamburger (mobile) */
-.menu-icon {
-    font-size: 24px;
-    color: #fff;
-    cursor: pointer;
-    display: none;
-    height: 40px; /* Forces consistent height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-@media (max-width: 768px) {
-    .menu-icon {
-        display: block;
-    }
-    nav {
-        position: absolute;
-        top: 60px;
-        right: 30px;
-        background: rgba(0,0,0,0.95);
-        padding: 15px;
-        border-radius: 8px;
-        flex-direction: column;
-        display: none;
-    }
-    nav.open {
-        display: flex;
-    }
-    .nav-dropdown-content {
-        position: static;
-        display: none;
-        min-width: unset;
-        box-shadow: none;
-        padding: 0;
-        border-radius: 0;
-    }
-    .nav-dropdown:hover .nav-dropdown-content {
-        display: none; 
     }
 }
 
@@ -502,6 +451,7 @@ nav {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Featured Articles Grid */
 .featured-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -509,31 +459,37 @@ nav {
     max-width: 1200px;
     margin: 0 auto;
     padding: 1rem;
+    /* Force grid items to stretch to fill the cell */
+    justify-items: stretch;
+    align-items: stretch;
 }
 
-/* Ensures cards stack properly on mobile */
-@media (max-width: 768px) {
-    .featured-grid {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    
-    .featured-card {
-        width: 100%;
-        max-width: 400px;
-    }
+/* Featured Article and Blog/Product Cards */
+.featured-card, .card {
+    background: #2a2a2a;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    /* Ensure each card takes up the full width of its grid cell */
+    width: 100%;
 }
 
-.featured-card {
-    background:#2a2a2a;
-    border-radius:8px;
-    overflow:hidden;
-    text-decoration:none;
-    color:#fff;
-    transition:transform 0.3s,box-shadow 0.3s;
-    box-shadow:0 4px 10px rgba(0,0,0,0.3);
+/* Blog/Featured Products Grid */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* Force grid items to stretch to fill the cell */
+    justify-items: stretch;
+    align-items: stretch;
 }
+
 .featured-card:hover {
     transform:scale(1.03);
     box-shadow:0 8px 20px rgba(0,0,0,0.4);
@@ -850,33 +806,68 @@ body.post .main-content {
     opacity: 1;
 }
 
-
-/* Sidebar Navigation Links */
-.right-sidebar .sidebar-nav ul {
+/* Remove any container background if present */
+.right-sidebar .sidebar-nav {
+    background: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Reset the list styling */
+  .right-sidebar .sidebar-nav ul {
     list-style: none;
     padding: 0;
-    margin: 10px 0;
-}
-
-.right-sidebar .sidebar-nav ul li {
-    margin: 10px 0;
-}
-
-.right-sidebar .sidebar-nav ul li a {
-    display: inline-block; /* Ensure the element can be transformed */
+    margin: 0;
+  }
+  
+  /* Style each navigation link */
+  .right-sidebar .sidebar-nav ul li a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
     color: #ff6600;
     text-decoration: none;
-    font-size: 18px;  /* Adjust text size for better readability */
-    transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Hover Effects for Sidebar Links */
-.right-sidebar .sidebar-nav ul li a:hover {
+    /* Note: no transform here so that the underline remains unaffected */
+    transition: color 0.3s ease;
+  }
+  
+  /* Animate the text inside the link */
+  .right-sidebar .sidebar-nav ul li a .nav-text {
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Create an animated underline using a pseudo-element */
+  .right-sidebar .sidebar-nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 5px;            /* Adjust to position the line appropriately */
+    width: 100%;
+    height: 2px;            /* Thickness of the underline */
+    background: #ff6600;    /* Underline color (your accent) */
+    transform: scaleX(0);   /* Hidden by default */
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  
+  /* On hover, change the text color and translate the text */
+  .right-sidebar .sidebar-nav ul li a:hover {
     color: #ffa64d;
-    transform: scale(1.03);             /* Slight zoom effect */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);  /* Shadow effect */
-}
-
+  }
+  
+  /* When hovering, translate only the text inside the span */
+  .right-sidebar .sidebar-nav ul li a:hover .nav-text {
+    transform: translateX(5px);
+  }
+  
+  /* On hover, expand the underline */
+  .right-sidebar .sidebar-nav ul li a:hover::after {
+    transform: scaleX(1);
+  }
+  
 /* ---------- Main Content Adjustments for Post Pages ---------- */
 /* Adjust Main Content for Post Pages */
 @media (max-width: 1200px) {
