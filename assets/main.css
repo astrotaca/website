@@ -87,14 +87,23 @@ header {
     height: 60px;
 }
 
-/* Logo */
+/* Logo / AstroTaca */
 .logo a {
+    display: inline-block;             /* Ensure transforms work correctly */
+    transform-origin: center center;     /* Center the transformation */
     font-size: 24px;
     font-weight: bold;
     color: #ffffff;
     margin-right: 20px;
-    white-space: nowrap; /* Prevent logo text from wrapping */
+    white-space: nowrap;               /* Prevent logo text from wrapping */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.logo a:hover {
+    transform: scale(1.025);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
 
 /* Cart Icon – now white */
 .about-cart-group .cart-icon {

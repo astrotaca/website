@@ -17,7 +17,7 @@ seo_keywords: "flat panel, astrophotography"
 
 <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
   <input type="hidden" name="cmd" value="_cart">
-  <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL@domain.com">
+  <input type="hidden" name="business" value="tacavonius@gmail.com">
   <input type="hidden" name="item_name" value="AstroTaca Flap Flat Panel">
   <input type="hidden" name="amount" value="200.00">
   <input type="hidden" name="currency_code" value="USD">
