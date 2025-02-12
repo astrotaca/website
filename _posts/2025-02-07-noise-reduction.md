@@ -2,6 +2,7 @@
 layout: post
 title: "PixInsight Noise Reduction: TGV Denoise vs. Alternative Methods — Which One is Best?"
 date: 2025-02-07 12:00:00
+tags: [processing, noise-reduction, pixinsight]
 ---
 
 # PixInsight Noise Reduction: TGV Denoise vs. Alternative Methods — Which One is Best?

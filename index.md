@@ -25,65 +25,112 @@ hero_image: "/assets/images/hero.jpg"
 </div>
 {% endif %}
 
-<!-- Featured Articles -->
-<section class="home-intro" data-aos="fade-up">
-  <h2>Featured Articles</h2>
-  <p>Check out our blog posts!</p>
-  <div class="featured-grid">
-    <!-- Featured Card 1: PixInsight Noise Reduction -->
-    <a class="featured-card" href="{{ '/blog/noise-reduction/' | relative_url }}">
-      <img src="{{ '/assets/images/pixinsight-noise-reduction.jpg' | relative_url }}" alt="PixInsight Noise Reduction"/>
-      <div class="featured-content">
-        <h3>PixInsight Noise Reduction</h3>
-        <p>Optimize your astrophotography images with advanced noise reduction techniques.</p>
+<!-- Deep Sky Section (Image on the left) -->
+<section class="info-section deep-sky-section">
+  <div class="container">
+    <div class="info-content" data-aos="fade-up" data-aos-delay="0" data-aos-duration="800">
+      <div class="info-image">
+        <img src="/assets/images/deep-sky.jpg" alt="Deep Sky">
       </div>
-    </a>
+      <div class="info-text">
+        <h2>Deep Sky</h2>
+        <p>
+          Explore the wonders of the universe with our in-depth deep sky articles.
+          From nebulae and galaxies to star clusters, get expert insights on astrophotography.
+        </p>
+        <a href="/deep-sky/" class="hero-button white">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Featured Card 2: Comparison of Stacking Algorithms -->
-    <a class="featured-card" href="{{ '/blog/stacking-algorithms/' | relative_url }}">
-      <img src="{{ '/assets/images/stacking-algorithms.jpg' | relative_url }}" alt="Comparison of Stacking Algorithms"/>
-      <div class="featured-content">
-        <h3>Comparison of Stacking Algorithms</h3>
-        <p>Discover the best stacking techniques for enhancing your astrophotography workflow.</p>
+<!-- Processing Section (Image on the right) -->
+<section class="info-section processing-section">
+  <div class="container">
+    <div class="info-content" style="flex-direction: row-reverse;" data-aos="fade-up" data-aos-delay="0" data-aos-duration="800">
+      <div class="info-image">
+        <img src="/assets/images/processing.jpg" alt="Processing">
       </div>
-    </a>
+      <div class="info-text">
+        <h2>Processing</h2>
+        <p>
+          Learn how we process our astrophotography images with precision and care.
+          Our expert techniques ensure that every detail shines.
+        </p>
+        <a href="/processing/" class="hero-button white">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Featured Card 3: Beginner Astro Tips -->
-    <a class="featured-card" href="{{ '/blog/beginners-astro-tips/' | relative_url }}">
-      <img src="{{ '/assets/images/beginners-astro-tips.jpg' | relative_url }}" alt="Beginner Astro Tips"/>
-      <div class="featured-content">
-        <h3>Beginner Astro Tips</h3>
-        <p>Essential guidance for new astrophotographers.</p>
+<!-- Wide Field Section (Image on the left) -->
+<section class="info-section wide-field-section">
+  <div class="container">
+    <div class="info-content" data-aos="fade-up" data-aos-delay="0" data-aos-duration="800">
+      <div class="info-image">
+        <img src="/assets/images/wide-field.jpg" alt="Wide Field">
       </div>
-    </a>
-  </div>  <!-- End .featured-grid for Featured Articles -->
-</section>  <!-- End Featured Articles section -->
+      <div class="info-text">
+        <h2>Wide Field</h2>
+        <p>
+          Experience breathtaking landscapes and star-filled skies with our wide field collection.
+          Perfect for capturing expansive views of the Milky Way and the night sky.
+        </p>
+        <a href="/wide-field/" class="hero-button white">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- Featured Products -->
-<section class="home-intro" data-aos="fade-up">
-  <h2>Featured Products</h2>
-  <p>Take your setup to the next level!</p>
-  <div class="featured-grid">
-    <a class="featured-card" href="{{ '/products/flap-flat-panel/' | relative_url }}">
-      <img src="{{ '/assets/images/flap-flat-panel.jpg' | relative_url }}" alt="AstroTaca Flap Flat Panel"/>
-      <div class="featured-content">
-        <h3>AstroTaca Flap Flat Panel</h3>
-        <p>$200.00 &mdash; Reliable flat panel for your flats.</p>
+<!-- Unified Featured Block (Featured Articles & Products) -->
+<section class="featured-block unified" data-aos="fade-up">
+  <div class="container featured-container unified">
+    <!-- Featured Articles -->
+    <div class="featured-articles">
+      <h2>Featured Articles</h2>
+      <p>Check out our blog posts!</p>
+      <div class="featured-grid">
+        {% for guide in site.data.featured_guides %}
+          <a class="featured-card" href="{{ guide.url | relative_url }}">
+            <img src="{{ guide.image | relative_url }}" alt="{{ guide.title }}">
+            <div class="featured-content">
+              <h3>{{ guide.title }}</h3>
+              <p>{{ guide.description }}</p>
+            </div>
+          </a>
+        {% endfor %}
       </div>
-    </a>
-    <a class="featured-card" href="{{ '/products/eaf/' | relative_url }}">
-      <img src="{{ '/assets/images/eaf.jpg' | relative_url }}" alt="AstroTaca Electronic Auto Focuser"/>
-      <div class="featured-content">
-        <h3>AstroTaca Electronic Auto Focuser</h3>
-        <p>$100.00 &mdash; Automated focusing for clear stars.</p>
+    </div>
+
+    <hr class="featured-divider">
+
+    <!-- Featured Products -->
+    <div class="featured-products">
+      <h2>Featured Products</h2>
+      <p>Take your setup to the next level!</p>
+      <div class="featured-grid">
+        <a class="featured-card" href="{{ '/products/flap-flat-panel/' | relative_url }}">
+          <img src="{{ '/assets/images/flap-flat-panel.jpg' | relative_url }}" alt="AstroTaca Flap Flat Panel">
+          <div class="featured-content">
+            <h3>AstroTaca Flap Flat Panel</h3>
+            <p>$200.00 &mdash; Reliable flat panel for your flats.</p>
+          </div>
+        </a>
+        <a class="featured-card" href="{{ '/products/eaf/' | relative_url }}">
+          <img src="{{ '/assets/images/eaf.jpg' | relative_url }}" alt="AstroTaca Electronic Auto Focuser">
+          <div class="featured-content">
+            <h3>AstroTaca Electronic Auto Focuser</h3>
+            <p>$100.00 &mdash; Automated focusing for clear stars.</p>
+          </div>
+        </a>
+        <a class="featured-card" href="{{ '/products/dc-hub/' | relative_url }}">
+          <img src="{{ '/assets/images/dc-hub.jpg' | relative_url }}" alt="AstroTaca DC Hub">
+          <div class="featured-content">
+            <h3>AstroTaca DC Hub</h3>
+            <p>$50.00 &mdash; Manage power distribution easily.</p>
+          </div>
+        </a>
       </div>
-    </a>
-    <a class="featured-card" href="{{ '/products/dc-hub/' | relative_url }}">
-      <img src="{{ '/assets/images/dc-hub.jpg' | relative_url }}" alt="AstroTaca DC Hub"/>
-      <div class="featured-content">
-        <h3>AstroTaca DC Hub</h3>
-        <p>$50.00 &mdash; Manage power distribution easily.</p>
-      </div>
-    </a>
+    </div>
   </div>
 </section>

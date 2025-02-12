@@ -421,21 +421,6 @@ nav {
     margin-bottom:1.5rem;
 }
 
-/* ===== Consolidated Hero Button ===== */
-.hero-button {
-    display: inline-block;
-    background-color: #ff6600;
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 4px;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.hero-button:hover {
-    background-color: #e05500;
-}
-
 /* HOME INTRO & FEATURED GRIDS */
 .home-intro {
     padding:2rem;
@@ -461,18 +446,25 @@ nav {
 }
 
 /* Featured Articles Grid */
-.featured-grid {
+/* Combined Featured Container */
+.featured-container {
+    background: #1c1c1c;  /* Gray background */
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  /* Updated Featured Grid: Reduced gap between cards */
+  .featured-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 15px;  /* Reduced gap from 20px */
     max-width: 1200px;
     margin: 0 auto;
     padding: 1rem;
-    /* Force grid items to stretch to fill the cell */
     justify-items: stretch;
     align-items: stretch;
-}
-
+  }
+  
 /* Featured Article and Blog/Product Cards */
 .featured-card, .card {
     background: #2a2a2a;
@@ -523,6 +515,31 @@ nav {
     margin-bottom:0;
     color:#bbb;
 }
+
+.featured-container.unified {
+    background: rgba(28, 28, 28, 0.95); /* A smooth, dark gray background */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .featured-divider {
+    border: none;
+    border-top: 1px solid #444;
+    margin: 2rem 0;
+  }
+  
+  /* Optionally, add a slight transition for smoother hover effects */
+  .featured-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .featured-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+  
 
 /* CARD GRID (blog, about, related products, etc.) */
 .card-grid {
@@ -876,6 +893,70 @@ body.post .main-content {
   .right-sidebar .sidebar-nav ul li a:hover::after {
     transform: scaleX(1);
   }
+ /* Adjust overall vertical spacing for info sections */
+/* Info Section Layout */
+.info-section {
+    padding: 0.5rem 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .info-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: nowrap;
+  }
+  
+  .info-image {
+    flex: 0 0 40%;
+  }
+  
+  .info-text {
+    flex: 1;
+    padding-left: 2rem;
+    max-width: 600px;
+  }
+  
+  /* Image Styling */
+  .info-image img {
+    width: 100%;
+    border-radius: 8px;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+  
+  /* Text Styling */
+  .info-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .info-text p {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* White "Learn More" Button Styling */
+  .hero-button.white {
+    background-color: #fff;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    margin-top: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7); /* Increased opacity */
+  }
+  
+  .hero-button.white:hover {
+    background-color: #f9f9f9;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7); /* Slightly larger on hover */
+    transform: scale(1.05);
+  }
+  
   
 /* ---------- Main Content Adjustments for Post Pages ---------- */
 /* Adjust Main Content for Post Pages */

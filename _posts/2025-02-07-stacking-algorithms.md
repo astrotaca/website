@@ -2,6 +2,7 @@
 layout: post
 title: "Comparison of Stacking Algorithms: Optimizing Your Astrophotography Workflow"
 date: 2025-02-07 12:00:00
+tags: [processing, stacking-algorithms, pixinsight, deepskystacker]
 ---
 
 # Comparison of Stacking Algorithms: Optimizing Your Astrophotography Workflow
