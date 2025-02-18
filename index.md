@@ -35,8 +35,7 @@ hero_image: "/assets/images/hero.jpg"
       <div class="info-text">
         <h2>Deep Sky</h2>
         <p>
-          Explore the wonders of the universe with our in-depth deep sky articles.
-          From nebulae and galaxies to star clusters, get expert insights on astrophotography.
+          Deep sky imaging is one of the most rewarding parts of astrophotography, but it comes with its challenges. From capturing faint details to getting the right processing workflow, there’s always something new to learn. These guides cover the basics and beyond, helping you get better results with each session.
         </p>
         <a href="/deep-sky/" class="hero-button white">Learn More</a>
       </div>
@@ -54,8 +53,7 @@ hero_image: "/assets/images/hero.jpg"
       <div class="info-text">
         <h2>Processing</h2>
         <p>
-          Learn how we process our astrophotography images with precision and care.
-          Our expert techniques ensure that every detail shines.
+          Processing is the key to transforming raw data into breathtaking astrophotography. By stacking images, reducing noise, and adjusting colors, you can reveal incredible details hidden in the night sky. Follow along as we explore techniques to improve your astrophotography step by step.
         </p>
         <a href="/processing/" class="hero-button white">Learn More</a>
       </div>
@@ -73,8 +71,7 @@ hero_image: "/assets/images/hero.jpg"
       <div class="info-text">
         <h2>Wide Field</h2>
         <p>
-          Experience breathtaking landscapes and star-filled skies with our wide field collection.
-          Perfect for capturing expansive views of the Milky Way and the night sky.
+          Wide-field astrophotography is a great way to capture the night sky without the need for specialized gear. Whether you're shooting with a DSLR and a tripod or tracking with a star tracker, these guides will help you get sharper stars, better compositions, and more detailed nightscapes.
         </p>
         <a href="/wide-field/" class="hero-button white">Learn More</a>
       </div>

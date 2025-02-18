@@ -1,12 +1,14 @@
 - title: "PixInsight Noise Reduction"
   url: "/blog/noise-reduction/"
   image: "/assets/images/pixinsight-noise-reduction.jpg"
-  description: "Optimize your astrophotography images with advanced noise reduction techniques."
+  description: "Learn how to clean up your astrophotos using PixInsight’s powerful noise reduction tools."
+
 - title: "Comparison of Stacking Algorithms"
   url: "/blog/stacking-algorithms/"
   image: "/assets/images/stacking-algorithms.jpg"
-  description: "Discover the best stacking techniques for enhancing your astrophotography workflow."
+  description: "This guide compares different algorithms to help you get the most detail from your images."
+
 - title: "Beginner Astro Tips"
   url: "/blog/beginners-astro-tips/"
   image: "/assets/images/beginners-astro-tips.jpg"
-  description: "Essential guidance for new astrophotographers."
+  description: "Getting started with astrophotography? These beginner-friendly tips will help you capture better images right away."
