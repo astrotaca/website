@@ -38,7 +38,7 @@ a:hover {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 3rem; /* Increased from 2rem for more whitespace */
 }
 
 /* ========================================
@@ -439,7 +439,7 @@ header nav {
 .hero {
     position: relative;
     width: 100%;
-    height: 50vh;
+    height: 60vh;
     background: url('https://via.placeholder.com/1600x900/000000/ffffff?text=Starry+Background') center/cover no-repeat;
     display: flex;
     align-items: center;
@@ -448,7 +448,7 @@ header nav {
 .hero-overlay {
     position:absolute;
     top:0;right:0;bottom:0;left:0;
-    background: rgba(0,0,0,0.55);
+    background: rgba(0,0,0,0.65);
 }
 .hero-content {
     position: relative;
@@ -457,7 +457,7 @@ header nav {
     color:#fff;
 }
 .hero-content h1 {
-    font-size:3rem;
+    font-size:3.5rem;
     margin-bottom:1rem;
 }
 .hero-content p {
@@ -501,7 +501,7 @@ header nav {
   .featured-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 15px;  /* Reduced gap from 20px */
+    gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
     padding: 1rem;
@@ -517,7 +517,7 @@ header nav {
     text-decoration: none;
     color: #fff;
     transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     /* Ensure each card takes up the full width of its grid cell */
     width: 100%;
 }
@@ -536,8 +536,8 @@ header nav {
 }
 
 .featured-card:hover {
-    transform:scale(1.03);
-    box-shadow:0 8px 20px rgba(0,0,0,0.4);
+    transform:scale(1.05);
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
 }
 .featured-card img {
     display: block;
@@ -672,7 +672,7 @@ footer {
     background: #121212;  /* Matches your site's background */
     color: #bbb;
     text-align: center;
-    padding: 3px 0;  /* Reduced vertical padding for a narrower footer */
+    padding: 15px 0;
     flex-shrink: 0;
 }
 footer a {
@@ -696,6 +696,13 @@ footer a {
     text-decoration: none;
   }
   
+    .social-icon {
+        transition: transform 0.3s ease;
+    }
+    .social-icon:hover {
+        transform: scale(1.1);
+    }
+
 /* =========== MODAL FOR ABOUT GALLERY ========== */
 .modal {
     display:none;
@@ -811,7 +818,7 @@ body.post .main-content {
     /* Initial state: slightly offset and invisible */
     transform: translateX(-20%);
     opacity: 0;
-    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+    transition: transform 1s ease-out, opacity 1s ease-out;
 }
 
 .right-sidebar.slide-in {
@@ -989,7 +996,7 @@ body.post .main-content {
     font-weight: 600;
     text-decoration: none;
     border: 1px solid #ddd;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.4s ease, transform 0.4s ease, letter-spacing 0.4s ease;
     display: inline-block;
     margin-top: 1rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7); /* Increased opacity */
