@@ -10,6 +10,13 @@ tags: [deep-sky, nebula, galaxies, star-clusters, cosmic, astrophotography, tele
 <h2>Deep Sky Guides</h2>
 <p>Explore our in-depth deep sky guides for capturing nebulae, galaxies, and star clusters.</p>
 
+<!-- Introduction Block -->
+<div class="topic-intro">
+  <p>
+    Deep sky photography opens a window to the cosmos, revealing the hidden details of nebulae, galaxies, and star clusters. In these guides, you'll learn everything from the basics of long-exposure imaging to advanced techniques for capturing faint celestial objects. Whether you're a beginner or looking to refine your skills, our deep sky guides offer valuable insights to help you explore the universe.
+  </p>
+</div>
+
 <div class="featured-grid">
   {% assign deep_sky_guides = site.posts | where_exp:"post", "post.tags contains 'deep-sky'" | sort:"date" | reverse %}
   {% if deep_sky_guides.size > 0 %}

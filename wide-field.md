@@ -10,6 +10,13 @@ tags: [wide-field, astrophotography, milky-way, landscapes, night-sky, wide-angl
 <h2>Wide Field Guides</h2>
 <p>Experience expansive views of the Milky Way and star-filled skies with our wide field guides.</p>
 
+<!-- Introduction Block -->
+<div class="topic-intro">
+  <p>
+    Wide field astrophotography lets you capture the vast, awe-inspiring beauty of the night sky. Our guides cover techniques for shooting expansive vistas of the Milky Way, star trails, and panoramic celestial scenes. Discover the tips and tricks you need to capture stunning wide field images.
+  </p>
+</div>
+
 <div class="featured-grid">
   {% assign wide_field_guides = site.posts | where_exp:"post", "post.tags contains 'wide-field'" | sort:"date" | reverse %}
   {% if wide_field_guides.size > 0 %}
