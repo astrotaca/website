@@ -18,6 +18,15 @@ html {
 /* ========================================
    GLOBAL (Body)
 ======================================== */
+
+:root {
+    --background: #121212;
+    --text: #e0e0e0;
+    --accent: #1e3a8a;
+    --card-bg: #2a2a2a;
+    --header-bg: #1c1c1c;
+  }
+
 body {
     transition: opacity 0.4s ease-in-out;
 }
@@ -27,7 +36,7 @@ main {
 }
 
 a {
-    color: white;
+    color: var(--accent);
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -305,18 +314,32 @@ header nav {
 
 
 /* Hide full nav & show menu icon if there isn't enough space */
-@media (max-width: 950px) { /* Adjust width if needed */
+@media (max-width: 950px) {
     nav {
         display: none;
         flex-direction: column;
-        position: absolute;
+        position: fixed;
         top: 60px;
-        right: 30px;
+        right: 0;
+        width: 250px;
         background: rgba(0, 0, 0, 0.95);
         padding: 15px;
-        border-radius: 8px;
+        border-radius: 0 0 0 8px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
     }
 
+    nav.open {
+        display: flex;
+        transform: translateX(0);
+    }
+
+    .nav-dropdown-content {
+        position: static;
+        box-shadow: none;
+        background: var(--header-bg);
+        padding: 10px;
+    }
 }
 
     /* Show nav when menu is opened */
@@ -334,7 +357,7 @@ header nav {
 
 .nav-dropbtn {
     background: none;
-    color: #ff6600;
+    color: #1e3a8a;
     font-weight: 500;
     border: none;
     cursor: pointer;
@@ -366,10 +389,19 @@ header nav {
     padding: 10px 0;
     opacity: 0;
     visibility: hidden;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transform: translateY(10px); /* Slight slide-up effect */
+}
+
+.nav-dropdown:hover .nav-dropdown-content {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 .nav-dropdown-content a {
-    color: #ff6600;
+    color: #1e3a8a;
     padding: 10px 15px;
     display: block;
     transition: background 0.3s ease;
@@ -444,7 +476,9 @@ header nav {
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: fadeIn 1.5s ease-in-out;
 }
+
 .hero-overlay {
     position:absolute;
     top:0;right:0;bottom:0;left:0;
@@ -479,14 +513,20 @@ header nav {
     font-size:1rem;
     margin-bottom:1rem;
 }
+
 .featured-card, .card {
     background: #2a2a2a;
     border-radius: 8px;
     overflow: hidden;
     text-decoration: none;
     color: #fff;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.featured-card:hover, .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
 }
 
 /* Featured Articles Grid */
@@ -497,6 +537,13 @@ header nav {
     text-align: center;
   }
   
+  .section-divider {
+    border: none;
+    border-top: 1px solid #444;
+    margin: 2rem auto;
+    width: 80%;
+}
+
   /* Updated Featured Grid: Reduced gap between cards */
   .featured-grid {
     display: grid;
@@ -539,13 +586,13 @@ header nav {
     transform:scale(1.05);
     box-shadow:0 10px 25px rgba(0,0,0,0.4);
 }
-.featured-card img {
-    display: block;
-    width: 100%;
-    height: 200px;       /* Fixed height for consistency */
-    object-fit: cover;   /* Ensures the image fills the area without distortion */
-}
 
+.featured-card img, .card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
 .featured-content {
     padding: 1rem;
     flex: 1;             /* Allows this section to fill available space */
@@ -656,7 +703,7 @@ header nav {
     font-size:0.9rem;
 }
 .cookie-banner button {
-    background:#ff6600;
+    background:#1e3a8a;
     border:none;
     border-radius:4px;
     color:#fff;
@@ -1008,6 +1055,14 @@ body.post .main-content {
     transform: scale(1.05);
   }
   
+  .hero-button {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+}
   
 /* ---------- Main Content Adjustments for Post Pages ---------- */
 /* Adjust Main Content for Post Pages */
@@ -1053,15 +1108,17 @@ body.post .main-content {
     }
 
     .right-sidebar {
-        position: fixed; /* Keep it fixed for the slide effect */
+        position: fixed;
         top: 0;
         left: 0;
-        width: 25vw;   /* Maintain the same width as desktop (or adjust as needed) */
-        min-width: 280px;
-        padding: 0;    /* Remove extra padding */
+        width: 80vw;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    .right-sidebar.slide-in {
+        transform: translateX(0);
     }
 }
-
 
 /* === Mobile UI Enhancements === */
 @media (max-width: 768px) {
@@ -1090,6 +1147,14 @@ body.post .main-content {
       font-size: 1rem;
     }
   }
+
+  .hero {
+    animation: fadeIn 1s ease-in;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
   
 
   

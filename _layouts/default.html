@@ -16,9 +16,15 @@
     gtag('config', 'G-QN72KBM427');
   </script>
 
+  <script>
+    const searchItems = {{ site.data.search | jsonify }};
+  </script>
+
   <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
-  <script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/js/all.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 
   <style>
     /* Social Icons Hover Effect */
@@ -42,7 +48,7 @@
       flex: 1;
     }
 
-    /* Set the cart (meteor) icon to white and add hover effects */
+    /* Cart Icon Styling */
     header .about-cart-group .cart-icon {
       font-size: 28px;
       color: #fff;
@@ -54,14 +60,14 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.4);
     }
 
-    /* Ensure the button containing the cart icon appears clickable */
+    /* Nav Button */
     .nav-dropbtn {
       border: none;
       background: none;
       cursor: pointer;
     }
 
-    /* Ensure About and Cart remain on the same row in mobile view */
+    /* Mobile Layout */
     @media (max-width: 950px) {
       .about-cart-group {
         flex-direction: row;
@@ -72,11 +78,11 @@
 </head>
 <body class="{{ page.layout }}">
 
-  <!-- Render header only if layout is not "post" -->
+  <!-- Header (Excluded for Post Layouts) -->
   {% if page.layout != "post" %}
   <header>
     <div class="header-container">
-      <!-- Left Side: AstroTaca & Search -->
+      <!-- Left Side: Logo & Search -->
       <div class="header-left">
         <div class="logo">
           <a href="/" style="color:#fff; font-size:24px; font-weight:bold; text-decoration:none;">AstroTaca</a>
@@ -91,11 +97,20 @@
       <!-- Right Side: Navigation & Hamburger -->
       <div class="header-right">
         <nav id="nav-menu">
-          <a href="/">Home</a>
-          <a href="/guides/">Guides</a>
-          <a href="/products/">Products</a>
-          <a href="/drivers/">Drivers/Software</a>
-          <!-- Increased gap from 10px to 15px -->
+          {% for item in site.navbar_links %}
+            {% if item.submenu %}
+              <div class="nav-dropdown">
+                <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+                <div class="nav-dropdown-content">
+                  {% for subitem in item.submenu %}
+                    <a href="{{ subitem.url | relative_url }}">{{ subitem.title }}</a>
+                  {% endfor %}
+                </div>
+              </div>
+            {% else %}
+              <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+            {% endif %}
+          {% endfor %}
           <div class="about-cart-group" style="display: flex; align-items: center; gap: 15px;">
             <a href="/about/">About</a>
             <div class="nav-dropdown">
@@ -104,16 +119,13 @@
                 <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL@domain.com">
                 <input type="hidden" name="display" value="1">
                 <button class="nav-dropbtn">
-                  <!-- Changed cart icon to use "fa-meteor" with dedicated class "cart-icon" -->
                   <i class="fas fa-meteor fa-lg cart-icon"></i>
                 </button>
               </form>
             </div>
           </div>
         </nav>
-
-        <!-- Hamburger Menu Icon -->
-        <button class="menu-icon" onclick="toggleMenu()">
+        <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle Navigation Menu">
           <i class="fas fa-bars"></i>
         </button>
       </div>
@@ -121,7 +133,7 @@
   </header>
   {% endif %}
 
-  <!-- Wrap main content, sidebar, and footer in a site wrapper -->
+  <!-- Site Wrapper -->
   <div class="site-wrapper">
     <!-- Main Content -->
     <div class="content-container">
@@ -130,7 +142,7 @@
       </main>
     </div>
 
-    <!-- Sidebar Wrapper (Includes overlay) -->
+    <!-- Sidebar for Post Layouts -->
     {% if page.layout == "post" %}
     <div class="sidebar-wrapper">
       <div class="sidebar-overlay" onclick="closeSidebar()"></div>
@@ -141,10 +153,20 @@
             <div class="sidebar-nav">
               <h2>Navigation</h2>
               <ul>
-                <li><a href="/"><span class="nav-text">Home</span></a></li>
-                <li><a href="/guides/">Guides</a></li>
-                <li><a href="/products/">Products</a></li>
-                <li><a href="/drivers/">Drivers/Software</a></li>
+                {% for item in site.navbar_links %}
+                  {% if item.submenu %}
+                    <li class="nav-dropdown">
+                      <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+                      <div class="nav-dropdown-content">
+                        {% for subitem in item.submenu %}
+                          <a href="{{ subitem.url | relative_url }}">{{ subitem.title }}</a>
+                        {% endfor %}
+                      </div>
+                    </li>
+                  {% else %}
+                    <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+                  {% endif %}
+                {% endfor %}
               </ul>
             </div>
           </div>
@@ -155,18 +177,12 @@
 
     <!-- Footer -->
     <footer>
-      <p>&copy; {{ site.time | date: '%Y' }} AstroTaca</p>
+      <p>© {{ site.time | date: '%Y' }} AstroTaca</p>
       <div class="social-links" style="text-align: center; margin-top:8px;">
         <div class="social-wrapper">
-          <a href="https://github.com/astrotaca" target="_blank" class="social-icon github">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://astrobin.com/users/Astrotaca/" target="_blank" class="social-icon astrobin">
-            <i class="fa fa-camera-retro"></i>
-          </a>
-          <a href="https://www.instagram.com/astrotaca/" target="_blank" class="social-icon instagram">
-            <i class="fab fa-instagram"></i>
-          </a>
+          {% if site.social.github %}<a href="{{ site.social.github }}" class="social-icon github" aria-label="GitHub"><i class="fab fa-github"></i></a>{% endif %}
+          {% if site.social.astrobin %}<a href="{{ site.social.astrobin }}" class="social-icon astrobin" aria-label="Astrobin"><i class="fa fa-camera-retro"></i></a>{% endif %}
+          {% if site.social.instagram %}<a href="{{ site.social.instagram }}" class="social-icon instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>{% endif %}
         </div>
       </div>
     </footer>
@@ -180,14 +196,12 @@
   <script src="{{ '/assets/main.js' | relative_url }}"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({ duration:800, once:true });
+    AOS.init({ duration: 800, once: true });
 
-    /* Toggle mobile menu */
     function toggleMenu() {
       document.getElementById("nav-menu").classList.toggle("open");
     }
 
-    /* Sidebar Open & Close */
     function openSidebar() {
       document.querySelector(".sidebar-wrapper").classList.add("active");
       document.querySelector(".sidebar-overlay").classList.add("active");
@@ -196,6 +210,19 @@
     function closeSidebar() {
       document.querySelector(".sidebar-wrapper").classList.remove("active");
       document.querySelector(".sidebar-overlay").classList.remove("active");
+    }
+
+    function toggleSearch() {
+      // Placeholder for toggleSearch function
+      const searchBox = document.querySelector(".search-box");
+      searchBox.classList.toggle("active");
+    }
+
+    function liveSearch() {
+      // Placeholder for liveSearch function
+      const input = document.getElementById("search-input");
+      const results = document.getElementById("search-results");
+      // Add actual search logic here if needed
     }
   </script>
 </body>
