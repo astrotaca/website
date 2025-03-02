@@ -235,54 +235,44 @@ header {
     color: white;
     text-decoration: none;
 }
+
 /* STABLE HEADER NAVIGATION STYLING */
 header nav {
     display: flex;
     align-items: center;
     gap: 10px;            /* Adjust gap if needed */
     padding-right: 40px;
-    /* Hint to the browser that transforms may occur */
-    will-change: transform;
-  }
-  
-  header nav a {
+}
+
+header nav a {
     display: inline-block;
     padding: 8px 12px;    /* Refined padding for a consistent look */
     color: #fff;
     text-decoration: none;
     position: relative;
-    /* Force GPU acceleration to avoid flicker on refresh */
-    transform: translateZ(0);
-    transition: background-color 0.3s ease, 
-                transform 0.3s ease, 
-                letter-spacing 0.3s ease;
-    will-change: transform;
-  }
-  
-  /* Animated underline using a pseudo-element */
-  header nav a::after {
+    transform: translateZ(0); /* Kept for GPU acceleration */
+}
+
+/* Enhanced white underline */
+header nav a::after {
     content: "";
     position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 2px;
-    width: 0%;
-    background: #fff;
-    transition: width 0.3s ease;
-  }
-  
-  /* On hover, apply a subtle upward move, increased letter spacing, and reveal the underline */
-  header nav a:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* A very subtle white overlay */
-    transform: translateY(-2px);                /* Slight upward movement */
-    letter-spacing: 0.5px;                        /* Subtle increase in letter spacing */
-  }
-  
-  header nav a:hover::after {
-    width: 100%;  /* Animate the underline to full width on hover */
-  }
-  
-  
+    left: 50%;            /* Start from center */
+    bottom: -2px;         /* Slightly below to avoid overlap with text */
+    height: 2.5px;        /* Slightly thicker for elegance */
+    width: 0%;            /* Initial width */
+    background: #fff;     /* Keep original white */
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.6); /* Subtle white glow */
+    transform: translateX(-50%); /* Center it */
+    transition: width 0.35s cubic-bezier(0.25, 0.1, 0.25, 1); /* Smoother easing */
+    border-radius: 1px;   /* Softened edges */
+}
+
+/* On hover, expand the underline to text width */
+header nav a:hover::after {
+    width: calc(100% - 24px); /* Subtract total horizontal padding (12px left + 12px right) */
+}
+
 /* Hamburger Icon Consolidated Rules */
 .menu-icon {
     font-size: 24px;
@@ -556,55 +546,43 @@ header nav {
     align-items: stretch;
   }
   
-/* Featured Article and Blog/Product Cards */
-.featured-card, .card {
+/* Featured Article Cards */
+.featured-card {
     background: #2a2a2a;
     border-radius: 8px;
     overflow: hidden;
     text-decoration: none;
     color: #fff;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-    /* Ensure each card takes up the full width of its grid cell */
-    width: 100%;
-}
-
-/* Blog/Featured Products Grid */
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    /* Force grid items to stretch to fill the cell */
-    justify-items: stretch;
-    align-items: stretch;
+    width: 100%; /* Ensure each card takes up the full width of its grid cell */
 }
 
 .featured-card:hover {
-    transform:scale(1.05);
-    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
-.featured-card img, .card img {
+.featured-card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
     display: block;
 }
+
 .featured-content {
     padding: 1rem;
-    flex: 1;             /* Allows this section to fill available space */
+    flex: 1; /* Allows this section to fill available space */
 }
 
 .featured-content h3 {
-    margin-bottom:0.5rem;
-    color:#fff;
+    margin-bottom: 0.5rem;
+    color: #fff;
 }
+
 .featured-content p {
-    margin-bottom:0;
-    color:#bbb;
+    margin-bottom: 0;
+    color: #bbb;
 }
 
 .featured-container.unified {
@@ -613,107 +591,45 @@ header nav {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     padding: 2rem;
     margin-top: 2rem;
-  }
-  
-  .featured-divider {
+}
+
+.featured-divider {
     border: none;
     border-top: 1px solid #444;
     margin: 2rem 0;
-  }
-  
-  /* Optionally, add a slight transition for smoother hover effects */
-  .featured-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .featured-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  }
-  
-
-/* CARD GRID (blog, about, related products, etc.) */
-.card-grid {
-    display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
-    gap:1.5rem;
-    padding:2rem;
-    max-width:1200px;
-    margin:0 auto;
 }
-.card {
-    background:#2a2a2a;
-    border-radius:8px;
-    overflow:hidden;
-    box-shadow:0 4px 10px rgba(0,0,0,0.3);
-    transition:transform 0.3s, box-shadow 0.3s;
-}
-.card:hover {
-    transform:scale(1.03);
-    box-shadow:0 8px 20px rgba(0,0,0,0.4);
-}
-.card img {
-    width:100%;
-    height:auto;
-    display:block;
-}
-.card-content {
-    padding:1rem;
-}
-.card-content h3 {
-    margin-bottom:0.5rem;
-    color:#fff;
-}
-.card-content p {
-    margin-bottom:1rem;
-    color:#bbb;
-}
-
-/* PAYPAL BUTTONS */
-.paypal-button {
-  background-color: #ffc439;
-  border: none;
-  border-radius: 4px;
-  padding: 6px 12px;
-  color: #111;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 8px;
-  font-size: 0.9rem;
-}
-.paypal-button:hover {
-  background-color: #f0f0f0;
-}
-
 /* COOKIE BANNER */
 .cookie-banner {
-    position:fixed;
-    bottom:0; left:0; right:0;
-    background:#2a2a2a;
-    color:#fff;
-    padding:10px 20px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    z-index:999999;
-    box-shadow:0 -2px 5px rgba(0,0,0,0.4);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #2a2a2a;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 999999;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.4);
 }
 .cookie-banner p {
-    margin:0;
-    font-size:0.9rem;
+    margin: 0;
+    font-size: 0.9rem;
 }
 .cookie-banner button {
-    background:#1e3a8a;
-    border:none;
-    border-radius:4px;
-    color:#fff;
-    padding:8px 12px;
-    font-weight:600;
-    cursor:pointer;
+    background: #1e3a8a;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    padding: 8px 12px;
+    font-weight: 600;
+    cursor: pointer;
 }
 .cookie-banner button:hover {
-    background:#f0f0f0;
+    background: #f0f0f0;
 }
+
 /* FOOTER */
 footer {
     background: #121212;  /* Matches your site's background */
@@ -730,58 +646,56 @@ footer a {
 .social-links {
     text-align: center;
     margin-top: 8px;
-  }
+}
   
-  .social-wrapper {
+.social-wrapper {
     display: inline-block;  /* Shrinks to the width of its contents (the icons) */
-  }
+}
   
-  .social-icon {
+.social-icon {
     font-size: 1.5em;         /* Slightly bigger icons */
     color: #fff;              /* White icons */
     margin: 0 10px;           /* Equal horizontal spacing */
     text-decoration: none;
-  }
-  
-    .social-icon {
-        transition: transform 0.3s ease;
-    }
-    .social-icon:hover {
-        transform: scale(1.1);
-    }
+    transition: transform 0.3s ease;
+}
+.social-icon:hover {
+    transform: scale(1.1);
+}
 
 /* =========== MODAL FOR ABOUT GALLERY ========== */
 .modal {
-    display:none;
-    position:fixed;
-    z-index:999999;
-    left:0; top:0;
-    width:100%; 
-    height:100%;
-    overflow:auto;
+    display: none;
+    position: fixed;
+    z-index: 999999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
     background: rgba(0,0,0,0.8);
-    justify-content:center;
-    align-items:center;
+    justify-content: center;
+    align-items: center;
 }
 .modal-content {
-    background:#1c1c1c;
-    margin:2rem auto;
-    padding:2rem;
-    max-width:800px;
-    border-radius:8px;
-    position:relative;
+    background: #1c1c1c;
+    margin: 2rem auto;
+    padding: 2rem;
+    max-width: 800px;
+    border-radius: 8px;
+    position: relative;
 }
 .modal-close {
-    position:absolute;
-    top:15px;
-    right:15px;
-    font-size:24px;
-    color:#fff;
-    cursor:pointer;
-    transition:color 0.3s;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s;
 }
 .modal-close:hover {
-    color:#f0f0f0;
+    color: #f0f0f0;
 }
 
 /* Constrain post content width */
@@ -793,30 +707,28 @@ footer a {
     border: 2px solid #444;
 }
 
-  
-  /* Before and After Image Section */
-  .before-after {
+/* Before and After Image Section */
+.before-after {
     display: flex;
     gap: 20px;
     justify-content: center;
     margin: 30px 0;
-  }
+}
   
-  .before-after img {
+.before-after img {
     width: 48%;
     border-radius: 8px;
     border: 2px solid #444;
-  }
+}
   
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
     .before-after {
-      flex-direction: column;
+        flex-direction: column;
     }
     .before-after img {
-      width: 100%;
+        width: 100%;
     }
-  }
-  
+}  
   
 /* ONLY AFFECT GUIDES POSTS */
 body.post .content-container {
