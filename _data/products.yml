@@ -10,3 +10,7 @@
   url: "/products/dc-hub/"
   image: "/assets/images/dc-hub.jpg"
   description: "$50.00 — Manage power distribution easily."
+- title: "Processing Stars with StarNet2 in PixInsight"
+  url: "/guides/starnet2-processing-guide/"
+  image: "/assets/images/starnet2processingguide.jpg"
+  description: "Processing the stars in your images with StarNet2."

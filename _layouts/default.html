@@ -16,8 +16,10 @@
     gtag('config', 'G-QN72KBM427');
   </script>
 
+  <!-- Search Items -->
   <script>
-    const searchItems = {{ site.data.search | jsonify }};
+    // Parse search data to avoid editor syntax errors
+    const searchItems = JSON.parse('{{ site.data.search | jsonify | escape }}');
   </script>
 
   <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
@@ -74,6 +76,31 @@
         align-items: center;
       }
     }
+
+    /* Mobile Navigation Menu Toggle */
+    #nav-menu {
+      display: none;
+    }
+    #nav-menu.open {
+      display: flex;
+      flex-direction: column;
+    }
+    @media (min-width: 951px) {
+      #nav-menu {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+
+    /* Search Box Responsive */
+    @media (max-width: 600px) {
+      .search-box input {
+        display: none;
+      }
+      .search-box.active input {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body class="{{ page.layout }}">
@@ -112,17 +139,14 @@
             {% endif %}
           {% endfor %}
           <div class="about-cart-group" style="display: flex; align-items: center; gap: 15px;">
-            <a href="/about/">About</a>
-            <div class="nav-dropdown">
-              <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                <input type="hidden" name="cmd" value="_cart">
-                <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL@domain.com">
-                <input type="hidden" name="display" value="1">
-                <button class="nav-dropbtn">
-                  <i class="fas fa-meteor fa-lg cart-icon"></i>
-                </button>
-              </form>
-            </div>
+            <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+              <input type="hidden" name="cmd" value="_cart">
+              <input type="hidden" name="business" value="tacavonius@gmail.com">
+              <input type="hidden" name="display" value="1">
+              <button class="nav-dropbtn" type="submit">
+                <i class="fas fa-meteor fa-lg cart-icon"></i>
+              </button>
+            </form>
           </div>
         </nav>
         <button class="menu-icon" onclick="toggleMenu()" aria-label="Toggle Navigation Menu">
@@ -188,11 +212,19 @@
     </footer>
   </div>
 
-  <div class="cookie-banner" id="cookie-banner" style="display:none;">
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookie-banner" style="display:none; position: fixed; bottom: 0; width: 100%; background: #222; color: #fff; padding: 10px; text-align: center; z-index: 1000;">
     <p>We use cookies to improve your experience. By continuing, you accept the use of cookies.</p>
-    <button id="cookie-accept-btn">Accept</button>
+    <button id="cookie-accept-btn" style="padding: 5px 10px; cursor: pointer;">Accept</button>
   </div>
-  
+
+  <!-- Sidebar Toggle Button for Post Layout -->
+  {% if page.layout == "post" %}
+  <button class="sidebar-toggle" onclick="openSidebar()" aria-label="Open Sidebar" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; background: #000; color: #fff; border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer;">
+    <i class="fas fa-bars"></i>
+  </button>
+  {% endif %}
+
   <script src="{{ '/assets/main.js' | relative_url }}"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
@@ -213,17 +245,42 @@
     }
 
     function toggleSearch() {
-      // Placeholder for toggleSearch function
       const searchBox = document.querySelector(".search-box");
       searchBox.classList.toggle("active");
+      const input = document.getElementById("search-input");
+      if (searchBox.classList.contains("active")) {
+        input.focus();
+      }
     }
 
     function liveSearch() {
-      // Placeholder for liveSearch function
       const input = document.getElementById("search-input");
+      const query = input.value.toLowerCase();
       const results = document.getElementById("search-results");
-      // Add actual search logic here if needed
+      results.innerHTML = "";
+      if (query.length > 0) {
+        const filtered = searchItems.filter(item => item.title.toLowerCase().includes(query));
+        filtered.forEach(item => {
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.href = item.url;
+          a.textContent = item.title;
+          li.appendChild(a);
+          results.appendChild(li);
+        });
+      }
     }
+
+    // Cookie Banner Functionality
+    document.addEventListener("DOMContentLoaded", function() {
+      if (!localStorage.getItem("cookieAccepted")) {
+        document.getElementById("cookie-banner").style.display = "block";
+      }
+      document.getElementById("cookie-accept-btn").addEventListener("click", function() {
+        localStorage.setItem("cookieAccepted", "true");
+        document.getElementById("cookie-banner").style.display = "none";
+      });
+    });
   </script>
 </body>
 </html>
